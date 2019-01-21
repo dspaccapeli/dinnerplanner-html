@@ -36,9 +36,11 @@ let DinnerModel = function() {
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		let allIngredients = {};
+		let allIngredients = [];
 		menu.forEach((entry) => {
-			return entry.ingredients;
+			entry.ingredients.forEach((ingredient) =>{
+				allIngredients.push(ingredient);
+			});
 		});
 		return allIngredients;
 	};
@@ -47,10 +49,8 @@ let DinnerModel = function() {
 	this.getTotalMenuPrice = function() {
 		//return the dishes as an array string (ingredients)
 		let totalMenuPrice = 0;
-		menu.forEach((entry) => {
-			(entry.ingredients).forEach((ingredient) => {
-				totalMenuPrice = totalMenuPrice + ingredient.price;
-			});
+		this.getAllIngredients().forEach((entry) => {
+			totalMenuPrice = totalMenuPrice + entry.price;
 		});
 		return totalMenuPrice*guestNumber;
 	};
