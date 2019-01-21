@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/IPDW.iml" filepath="$PROJECT_DIR$/.idea/IPDW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dinnerplanner-html.iml" filepath="$PROJECT_DIR$/.idea/dinnerplanner-html.iml" />
     </modules>
   </component>
 </project>

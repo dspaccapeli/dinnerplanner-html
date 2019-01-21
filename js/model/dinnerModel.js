@@ -1,55 +1,92 @@
 //DinnerModel Object constructor
-var DinnerModel = function() {
+let DinnerModel = function() {
  
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
+	let guestNumber = 0;
+	let menu = [];
 
 
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 1
-	}
+		//set the global variable
+		guestNumber = num;
+	};
 	
 	this.getNumberOfGuests = function() {
-		//TODO Lab 1
-	}
+		//get the global variable
+		return guestNumber;
+	};
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		//TODO Lab 1
-	}
+		let dishReturn;
+		menu.forEach((entry) => {
+			if(entry.type == type){
+				dishReturn = entry;
+			}
+		});
+		return dishReturn;
+	};
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 1
-	}
+
+		return menu;
+	};
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 1
-	}
+		let allIngredients = [];
+		menu.forEach((entry) => {
+			entry.ingredients.forEach((ingredient) =>{
+				allIngredients.push(ingredient);
+			});
+		});
+		return allIngredients;
+	};
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 1
-	}
+		//return the dishes as an array string (ingredients)
+		let totalMenuPrice = 0;
+		this.getAllIngredients().forEach((entry) => {
+			totalMenuPrice = totalMenuPrice + entry.price;
+		});
+		return totalMenuPrice*guestNumber;
+	};
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 1 
-	}
+		let toAdd = this.getDish(id);
+		let newMenu = [];
+		menu.forEach((entry) => {
+			if(entry.type !== toAdd.type){
+				newMenu.push(entry)
+			}
+		});
+		newMenu.push(toAdd);
+		menu = newMenu;
+	};
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 1
-	}
+		let toAdd = this.getDish(id);
+		let newMenu = [];
+		menu.forEach((entry) => {
+			if(entry.type !== toAdd.type){
+				newMenu.push(entry)
+			}
+		});
+		menu = newMenu;
+	};
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
 	  return dishes.filter(function(dish) {
-		var found = true;
+		let found = true;
 		if(filter){
 			found = false;
 			dish.ingredients.forEach(function(ingredient) {
@@ -84,7 +121,7 @@ var DinnerModel = function() {
 	// defining the unit i.e. "g", "slices", "ml". Unit
 	// can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
-	var dishes = [{
+	let dishes = [{
 		'id':1,
 		'name':'French toast',
 		'type':'starter',
@@ -327,4 +364,4 @@ var DinnerModel = function() {
 		}
 	];
 
-}
+};
