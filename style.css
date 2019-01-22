@@ -16,8 +16,8 @@
     margin-top: 110px!important;
 }
 
-@media screen and (min-width:580px) {
-    #lalala{
+@media screen and (min-width:576px) {
+    #lalala {
         display: block!important;
         visibility:visible!important;
     }
