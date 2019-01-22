@@ -22,6 +22,14 @@
         visibility:visible!important;
     }
 }
+
+@media screen and (min-width:768px) {
+    #lalaland {
+        display: block!important;
+        visibility:visible!important;
+    }
+}
+
 .blue {
     color: darkcyan;
 }

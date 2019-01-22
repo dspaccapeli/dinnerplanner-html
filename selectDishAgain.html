@@ -15,12 +15,12 @@
 <body>
 <div class="header" align="center"><h1>Dinner planner</h1></div>
 <div class="container-fluid">
-    <div id="selectDish_content">
+    <div id="selectDishAgain_content">
         <div class="row">
             <div id="menu" class="col-md-3 col-sm-4">
                 <div class="row" style="padding-top: 5px;">
                     <div class="col-sm-10 col-md-10 col-5"><h3>My Dinner</h3></div>
-                    <div class="col-sm-1 col-md-1 col-5 d-block d-sm-none"><h4 class="blue" style="padding-top: 5px;">SEK 100.00</h4></div>
+                    <div class="col-sm-1 col-md-1 col-5 d-block d-sm-none" id="total_navbar"><h4 class="blue" style="padding-top: 5px;">SEK 100.00</h4></div>
                     <div class="col-sm-1 col-md-1 col-2 d-block d-sm-none" align="right"><button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fas fa-bars"></span>
                     </button></div>
@@ -30,7 +30,7 @@
                     <div>
                         <div class="form-group">
                             <label for="sel1">People:</label>
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" id="people_number">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -51,12 +51,12 @@
                             <th>Cost</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
+                        <tbody id="table_body">
+                        <tr id="selected">
                             <td>Lala</td>
                             <td>SEK 100.00</td>
                         </tr>
-                        <tr class="table-info">
+                        <tr class="table-info" id="total">
                             <td></td>
                             <td class="blue">SEK 100.00</td>
                         </tr>
@@ -89,7 +89,7 @@
                 </div>
                 <hr>
                 <br>
-                <div class="row align-items-center">
+                <div class="row align-items-center" id="dish_again_list">
                     <div class="media_box col-md-4 col-sm-4">
                         <div class="media-top">
                             <img src="images/bakedbrie.jpg" class="media-object" style="width:100%; height: auto;">
@@ -115,32 +115,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="media_box col-md-4 col-sm-4" style="vertical-align: middle;">
-                        <div class="media-top">
-                            <img src="images/sourdough.jpg" class="media-object" style="width:100%; height: auto;">
-                        </div>
-                        <div class="media-body" align="center">
-                            <h4 class="media-heading">Sourdough</h4>
-                        </div>
-                    </div>
-                    <div class="media_box col-md-4 col-sm-4" style="vertical-align: middle;">
-                        <div class="media-top">
-                            <img src="images/toast.jpg" class="media-object" style="width:100%; height: auto;">
-                        </div>
-                        <div class="media-body" align="center">
-                            <h4 class="media-heading">Toast</h4>
-                        </div>
-                    </div>
-                    <div class="media_box col-md-4 col-sm-4" style="vertical-align: middle;">
-                        <div class="media-top">
-                            <img src="images/icecream.jpg" class="media-object" style="width:100%; height:auto;">
-                        </div>
-                        <div class="media-body" align="center">
-                            <h4 class="media-heading">Ice Cream</h4>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -156,6 +130,9 @@
 <script src="js/app.js"></script>
 <script src="js/model/dinnerModel.js"></script>
 <script src="js/view/exampleView.js"></script>
+<script src="js/view/selectDishView.js"></script>
+<script src="js/view/selectDishAgainView.js"></script>
+<script src="js/view/dinnerPrintoutView.js"></script>
 <!-- TODO: Here you should include JS code for your other views -->
 </body>
 </html>

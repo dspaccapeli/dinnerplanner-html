@@ -9,21 +9,21 @@
 <body>
     <div class="header" align="center"><h1>Dinner planner</h1></div>
         <div class="container-fluid">
-            <div id="selectDish_content">
+            <div id="dish_content">
                 <div class="row">
                     <div id="menu" class="col-md-4">
                         <div class="row" style="padding-top: 5px;">
-                            <div class="col-10 col-sm-10 col-md-10 "><h3>My Dinner</h3></div>
-                            <div class="col-2 col-sm-2 col-md-2 d-block d-md-none" align="right"><button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <div class="col col-sm-10 col-md-10"><h3>My Dinner</h3></div>
+                            <div class="col col-sm-2 col-md-2 d-block d-md-none" align="right"><button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="fas fa-bars"></span>
                             </button></div>
                         </div>
                         <hr>
-                        <div id="lalala" class="navbar-collapse collapse">
+                        <div id="lalaland" class="navbar-collapse collapse">
                             <div>
                                 <div class="form-group">
-                                    <label for="sel1">People:</label>
-                                    <select class="form-control" id="sel1">
+                                    <label for="people">People:</label>
+                                    <select class="form-control" id="people">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -55,15 +55,13 @@
                         </div>
 
                     </div>
-                    <div id="dishes" class="col-md-4 col-sm-4">
+                    <div id="dishes" class="col-md-4">
                         <h1>LASAGNE</h1>
                         <img src="images/icecream.jpg" alt="lasagne" class="image_responsive" style="width: 100%;">
                         <p class="body_text" id="randomText" style="padding-left: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <button type="button" class="btn btn-warning">back to search</button>
                     </div>
-                    <div class="fill"></div>
-
-                    <div id="ingredients" class="fill col-md-5 col-sm-4" style="background-color: LightGoldenrodYellow; outline: black">
+                    <div id="ingredients" class="col-md-4" style="background-color: LightGoldenrodYellow; outline: black">
                         <h3>INGREDIENTS FOR 3 PEOPLE</h3>
                         <div>
                             <table class="table">
@@ -126,9 +124,15 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <div align="center"><button type="button" class="btn btn-warning">add to menu</button></div>
+                            <div class="row">
+                                <div class="col-5">
+                                    <div align="center"><button type="button" class="btn btn-warning">add to menu</button></div>
+                                </div>
+                                <div class="col-3"></div>
+                                <div class="col-3">SEK 77.20</div>
+
+                            </div>
                         </div>
-                        <hr/>
 
                     </div>
 
@@ -148,3 +152,8 @@
 
 <!-- The application JavaScript code -->
 <script src="js/app.js"></script>
+<script src="js/model/dinnerModel.js"></script>
+<script src="js/view/exampleView.js"></script>
+<script src="js/view/selectDishView.js"></script>
+<script src="js/view/selectDishAgainView.js"></script>
+<script src="js/view/dinnerPrintoutView.js"></script>
