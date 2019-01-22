@@ -30,7 +30,6 @@ let DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-
 		return menu;
 	};
 
