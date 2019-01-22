@@ -12,6 +12,13 @@
     background-color: lightgray;
     border: 1px solid darkgray;
 }
-.menu_margin {
+.padding {
     margin-top: 110px!important;
+}
+
+@media screen and (min-width:580px) {
+    #lalala{
+        display: block!important;
+        visibility:visible!important;
+    }
 }
