@@ -7,149 +7,149 @@
     <title>Dinner planner</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-<div class="container full-width" style="padding-left: 0; padding-right: 0;">
-    <div id="header" class="col-md-12 header" align="center"><h1>Dinner planner</h1></div>
-
-    <div id="selectDish_content" style="padding-left: 15px; padding-right: 15px;">
+<div class="header" align="center"><h1>Dinner planner</h1></div>
+<div class="container-fluid">
+    <div id="selectDish_content">
         <div class="row">
-            <div id="menu" class="col-md-3 col-sm-4 collapse in" style="padding: 0 0 0 0; height: 100%; margin-bottom: 0; outline: 2px solid black;">
-                <div class="container">
-                    <h3>My Dinner</h3>
-                    <div class="form-group">
-                        People
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default">1</button>
-                            <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">10</a></li>
-                            </ul>
+            <div id="menu" class="col-md-4">
+                <div class="row" style="padding-top: 5px;">
+                    <div class="col-10 col-sm-10 col-md-10 "><h3>My Dinner</h3></div>
+                    <div class="col-2 col-sm-2 col-md-2 d-block d-md-none" align="right"><button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="fas fa-bars"></span>
+                    </button></div>
+                </div>
+                <hr>
+                <div id="lalala" class="navbar-collapse collapse">
+                    <div>
+                        <div class="form-group">
+                            <label for="sel1">People:</label>
+                            <select class="form-control" id="sel1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Dish Name</th>
+                            <th>Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Lala</td>
+                            <td>100.00 SEK</td>
+                        </tr>
+                        <tr class="info">
+                            <td>TOTAL</td>
+                            <td>100.00 SEK</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div align="center"><button type="button" class="btn btn-info">CONFIRM DINNER</button></div>
+                </div>
+
+            </div>
+            <div id="dishes" class="col-md-8" style="padding-top: 10px;">
+                <h3 align="center">FIND A DISH</h3>
+                <hr>
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <input type="text" class="form-control" id="usr" placeholder="Enter key words">
+                    </div>
+                    <div class="dropdown col-sm-4">
+                        <button class="btn btn-info btn-block dropdown-toggle" type="button" data-toggle="dropdown">All
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Main Course</a></li>
+                            <li><a href="#">Side Dish</a></li>
+                            <li><a href="#">Dessert</a></li>
+                            <li><a href="#">Appetizer</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4" align="center" style="padding-top: 5px;">
+                        <button class="btn btn-info" type="button">Search</button>
+                    </div>
+                </div>
+                <hr>
+                <br>
+                <div class="row align-items-center">
+                    <div class="media_box col-m-4 col-sm-4">
+                        <div class="media-top">
+                            <img src="images/bakedbrie.jpg" class="media-object" style="width:100%; height: auto;">
+                        </div>
+                        <div class="media-body" align="center">
+                            <h4 class="media-heading">Baked Brie</h4>
+                        </div>
+                    </div>
+                    <div class="media_box col-m-4 col-sm-4" style="vertical-align: middle;">
+                        <div class="media-top">
+                            <img src="images/icecream.jpg" class="media-object" style="width:100%; height: auto;">
+                        </div>
+                        <div class="media-body" align="center">
+                            <h4 class="media-heading">Ice Cream</h4>
+                        </div>
+                    </div>
+                    <div class="media_box col-m-4 col-sm-4" style="vertical-align: middle;">
+                        <div class="media-top">
+                            <img src="images/meatballs.jpg" class="media-object" style="width:100%; height: auto;">
+                        </div>
+                        <div class="media-body" align="center">
+                            <h4 class="media-heading">Meatballs</h4>
                         </div>
                     </div>
                 </div>
-
-                <div>
-                    <table class="table table-striped">
-                        <tbody>
-                        <tr class="secondary">
-                            <td> Dish Name</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td>SEK 0.00</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-            <div id="dishes" class="col-md-4 col-sm-4">
-                <h1>LASAGNE</h1>
-                <img src="images/lasagne.jpg" alt="lasagne" class="image_responsive" style="width: 100%;">
-                <p class="body_text" id="randomText" style="padding-left: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button type="button" class="btn btn-warning">back to search</button>
-            </div>
-            <div class="fill"></div>
-
-            <div id="ingredients" class="fill col-md-5 col-sm-4" style="background-color: LightGoldenrodYellow; outline: black">
-                <h3>INGREDIENTS FOR 3 PEOPLE</h3>
-                <hr/>
-                <div>
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <td> Dish Name</td>
-                            <td> Cost </td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td></td>
-                            <td> SEK</td>
-                            <td> Cost </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <hr/>
-                <div class="container">
                 <div class="row">
-                    <div class="col-4">
-                    <button type="button" class="btn btn-warning">add to menu</button>
+                    <div class="media_box col-m-4 col-sm-4" style="vertical-align: middle;">
+                        <div class="media-top">
+                            <img src="images/sourdough.jpg" class="media-object" style="width:100%; height: auto;">
+                        </div>
+                        <div class="media-body" align="center">
+                            <h4 class="media-heading">Sourdough</h4>
+                        </div>
                     </div>
-                    <div class="col-4"></div>
-                    <div class="col-4">
-                        SEK 77.20
+                    <div class="media_box col-m-4 col-sm-4" style="vertical-align: middle;">
+                        <div class="media-top">
+                            <img src="images/toast.jpg" class="media-object" style="width:100%; height: auto;">
+                        </div>
+                        <div class="media-body" align="center">
+                            <h4 class="media-heading">Toast</h4>
+                        </div>
                     </div>
-                </div>
+                    <div class="media_box col-m-4 col-sm-4" style="vertical-align: middle;">
+                        <div class="media-top">
+                            <img src="images/icecream.jpg" class="media-object" style="width:100%; height:auto;">
+                        </div>
+                        <div class="media-body" align="center">
+                            <h4 class="media-heading">Ice Cream</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</body>
+
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery.js"></script>
 <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 <!-- The application JavaScript code -->
 <script src="js/app.js"></script>
