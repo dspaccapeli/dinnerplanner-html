@@ -13,61 +13,139 @@
 
 </head>
 <body>
-<div class="container">
-    <div id="header" class="header" align="center"><h1>Dinner planner</h1></div>
-    <div id="selectDish_content">
+<div class="container full-width" style="padding-left: 0; padding-right: 0;">
+    <div id="header" class="col-md-12 header" align="center"><h1>Dinner planner</h1></div>
+
+    <div id="selectDish_content" style="padding-left: 15px; padding-right: 15px;">
         <div class="row">
-            <button data-toggle="collapse" data-target="#menu" style="position: absolute; float: right;"></button>
-            <div id="menu" class=" col-md-3 col-sm-4 collapse in">
-                <h3>My Dinner</h3>
-                <hr>
-                <div id="row">
+            <div id="menu" class="col-md-3 col-sm-4 collapse in" style="padding: 0 0 0 0; height: 100%; margin-bottom: 0; outline: 2px solid black;">
+                <div class="container">
+                    <h3>My Dinner</h3>
                     <div class="form-group">
-                        People:
-                        <label for="sel1">Select list:</label>
-                        <select class="form-control" id="sel1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                        </select>
+                        People
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">1</button>
+                            <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                                <li><a href="#">7</a></li>
+                                <li><a href="#">8</a></li>
+                                <li><a href="#">9</a></li>
+                                <li><a href="#">10</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <hr>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Dish Name</th>
-                        <th>Cost</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Lala</td>
-                        <td>100.00 SEK</td>
-                    </tr>
-                    <tr class="info">
-                        <td>TOTAL</td>
-                        <td>100.00 SEK</td>
-                    </tr>
-                    </tbody>
-                </table>
+
+                <div>
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr class="secondary">
+                            <td> Dish Name</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td>SEK 0.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
-            <div id="dishes" class="col-md-9 col-sm-8">
-                <p class="body_text" id="randomText" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div id="dishes" class="col-md-4 col-sm-4">
+                <h1>LASAGNE</h1>
+                <img src="images/lasagne.jpg" alt="lasagne" class="image_responsive" style="width: 100%;">
+                <p class="body_text" id="randomText" style="padding-left: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button type="button" class="btn btn-warning">back to search</button>
+            </div>
+            <div class="fill"></div>
 
+            <div id="ingredients" class="fill col-md-5 col-sm-4" style="background-color: LightGoldenrodYellow; outline: black">
+                <h3>INGREDIENTS FOR 3 PEOPLE</h3>
+                <hr/>
+                <div>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td> Dish Name</td>
+                            <td> Cost </td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                            <td> SEK</td>
+                            <td> Cost </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr/>
+                <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                    <button type="button" class="btn btn-warning">add to menu</button>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        SEK 77.20
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+</body>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->

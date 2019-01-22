@@ -1,6 +1,12 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 .header {
     padding: 20px;
     background-color: lightgray;
+    width: 100%;
 }
 .body_text {
     padding: 20px;
@@ -11,4 +17,21 @@
 .table_top {
     background-color: lightgray;
     border: 1px solid darkgray;
+}
+.fill {
+    min-height: 100%;
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.divider {
+    background-color: lightgray;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    border-top: none;
 }
