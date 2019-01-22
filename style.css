@@ -12,3 +12,16 @@
     background-color: lightgray;
     border: 1px solid darkgray;
 }
+.padding {
+    margin-top: 110px!important;
+}
+
+@media screen and (min-width:576px) {
+    #lalala {
+        display: block!important;
+        visibility:visible!important;
+    }
+}
+.blue {
+    color: darkcyan;
+}
