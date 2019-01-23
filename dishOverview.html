@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+<div id="overview_content" class="container-fluid" style="padding-left: 0; padding-right: 0;">
     <div id="header" class="col-md-12 header" align="center"><h1>Dinner planner</h1></div>
 
-    <div id="selectDish_content" style="padding: 10px 10px 10px 10px;">
+    <div style="padding: 10px 10px 10px 10px;">
         <div class="container-fluid pt-10 pb-10" id="menu">
             <div class="row">
-                <div class="col"><h3>My Dinner: 3 people</h3></div>
+                <div id="numOfPeople" class="col"><h3>My Dinner: 3 people</h3></div>
                 <div class="col"></div>
                 <div class="col">
                     <div align="center"> <button type="button" class="btn btn-info">Go back and edit dinner</button></div>
@@ -30,9 +30,7 @@
     <div class="container-fluid">
         <div id="dishOverview_content">
             <div class="row">
-                <div id="menu" class="col-md-4">
-
-                </div>
+                <div id="menuOverview" class="col-md-4"></div>
                 <div id="dishes" class="col-md-4" style="padding-top: 10px;">
                     <div class="row align-items-end">
 
@@ -70,10 +68,10 @@
                         </div>
                     </div>
                 </div>
-                <div id="total" class="col-md-4" style="align-self: flex-end;">
+                <div class="col-md-4" style="align-self: flex-end;">
                     <div style="border-left:1px solid lightgray; height:max-content"></div>
                     <div class="row align-items-end">Total:</div>
-                    <div class="row align-items-end">341.20 SEK</div>
+                    <div id="total" class="row align-items-end">341.20 SEK</div>
                 </div>
             </div>
         </div>
@@ -105,6 +103,11 @@
 <script src="js/app.js"></script>
 <script src="js/model/dinnerModel.js"></script>
 <script src="js/view/exampleView.js"></script>
+<script src="js/view/selectDishView.js"></script>
+<script src="js/view/selectDishAgainView.js"></script>
+<script src="js/view/dinnerPrintoutView.js"></script>
+<script src="js/view/dishDetailsView.js"></script>
+<script src="js/view/dishOverviewView.js"></script>
 <!-- TODO: Here you should include JS code for your other views -->
 </body>
 </html>
