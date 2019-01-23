@@ -1,7 +1,4 @@
 let DishDetailsView = function (container, model) {
-
-    $('#people option:contains(' + model.getNumberOfGuests() + ')').prop({selected: true});
-
     //In the real one it should be the selected one
     let dishDict = model.getDish(1);
 
