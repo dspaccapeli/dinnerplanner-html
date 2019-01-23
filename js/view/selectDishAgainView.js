@@ -31,7 +31,7 @@ var SelectDishViewAgain = function (container, model) {
     var stringSelected = "<tr id='selected'><td>";
     stringSelected += selected.name;
     stringSelected += "</td><td>SEK ";
-    stringSelected += price;
+    stringSelected += (price * (model.getNumberOfGuests()));
     stringSelected += "</td></tr><tr class='table-info' id='total'><td></td><td class='blue'>SEK ";
     stringSelected += model.getTotalMenuPrice();
     stringSelected += "</td></tr>";
