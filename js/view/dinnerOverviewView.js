@@ -34,8 +34,6 @@ let DinnerOverviewView = function (container, model) {
 
     HTMLString += "</div>";
 
-    console.log(HTMLString);
-
     midColumn.html(HTMLString);
 
     let right = container.find("#total");
