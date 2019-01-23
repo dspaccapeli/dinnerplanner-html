@@ -13,99 +13,157 @@
 
 </head>
 <body>
-<div id="header" class="header" align="center"></div>
-<div class="container-fluid">
-    <div id="dish_content">
-        <div class="row">
-            <div id="menu" class="col-md-4">
-                <div class="row" style="padding-top: 5px;">
-                    <div class="col col-sm-10 col-md-10"><h3>My Dinner</h3></div>
-                    <div class="col col-sm-2 col-md-2 d-block d-md-none" align="right"><button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="fas fa-bars"></span>
-                    </button></div>
-                </div>
-                <hr>
-                <div id="lalaland" class="navbar-collapse collapse">
-                    <div>
-                        <div class="form-group">
-                            <label for="people">People:</label>
-                            <select class="form-control" id="people">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+    <div class="header" align="center"><h1>Dinner planner</h1></div>
+        <div class="container-fluid">
+            <div id="dish_content">
+                <div class="row">
+                    <div id="menu" class="col-md-3 col-sm-4">
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="col-sm-10 col-md-10 col-5"><h3>My Dinner</h3></div>
+                            <div class="col-sm-1 col-md-1 col-5 d-block d-sm-none" id="total_navbar"><h4 class="blue" style="padding-top: 5px;">SEK 100.00</h4></div>
+                            <div class="col-sm-1 col-md-1 col-2 d-block d-sm-none" align="right"><button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="fas fa-bars"></span>
+                            </button></div>
                         </div>
-                    </div>
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Dish Name</th>
-                            <th>Cost</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="table-info">
-                            <td></td>
-                            <td class="blue">SEK 0.00</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div align="center"><button type="button" class="btn btn-info">CONFIRM DINNER</button></div>
-                </div>
-
-            </div>
-            <div id="dishes" class="col-md-4">
-                <h1 id="name"></h1>
-                <div id="image"></div>
-                <p class="body_text" id="description" style="padding-left: 0;"></p>
-                <button type="button" class="btn btn-warning">back to search</button>
-            </div>
-            <div id="ingredients" class="col-md-4" style="background-color: LightGoldenrodYellow; outline: black">
-                <h3 id="numOfPeople"></h3>
-                <div>
-                    <table id="table" class="table"></table>
-                    <div class="row">
-                        <div class="col-5">
-                            <div align="center"><button type="button" class="btn btn-warning">add to menu</button></div>
+                        <hr>
+                        <div id="lalala" class="navbar-collapse collapse">
+                            <div>
+                                <div class="form-group">
+                                    <label for="people_number">People:</label>
+                                    <select class="form-control" id="people_number">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Dish Name</th>
+                                    <th>Cost</th>
+                                </tr>
+                                </thead>
+                                <tbody id="table_body">
+                                <tr id="selected">
+                                    <td>Lala</td>
+                                    <td>SEK 100.00</td>
+                                </tr>
+                                <tr class="table-info" id="total">
+                                    <td></td>
+                                    <td class="blue">SEK 100.00</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div align="center"><button type="button" class="btn btn-info">CONFIRM DINNER</button></div>
                         </div>
-                        <div class="col-3"></div>
-                        <div id="total" class="col-3">SEK 77.20</div>
 
                     </div>
+                    <div id="dishes" class="col-md-4">
+                        <h1 id="name">LASAGNE</h1>
+                        <div id="image">
+                            <img src="images/icecream.jpg" alt="lasagne" class="image_responsive" style="width: 100%;">
+                        </div>
+                        <p class="body_text" id="description" style="padding-left: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <button type="button" class="btn btn-warning">back to search</button>
+                    </div>
+                    <div id="ingredients" class="col-md-4" style="background-color: LightGoldenrodYellow; outline: black">
+                        <h3 id="numOfPeople">INGREDIENTS FOR 3 PEOPLE</h3>
+                        <div>
+                            <table id="table" class="table">
+                                <tbody>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td></td>
+                                    <td> SEK</td>
+                                    <td> Cost </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-5">
+                                    <div align="center"><button type="button" class="btn btn-warning">add to menu</button></div>
+                                </div>
+                                <div class="col-3"></div>
+                                <div id="total" class="col-3">SEK 77.20</div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
-
             </div>
-
         </div>
     </div>
-</div>
-</div>
 
 
-<!-- jQuery -->
-<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-<!-- The application JavaScript code -->
-<script src="js/app.js"></script>
-<script src="js/model/dinnerModel.js"></script>
-<script src="js/view/exampleView.js"></script>
-<script src="js/view/selectDishView.js"></script>
-<script src="js/view/selectDishAgainView.js"></script>
-<script src="js/view/dinnerPrintoutView.js"></script>
-<script src="js/view/dishDetailsView.js"></script>
-<script src="js/view/dishOverviewView.js"></script>
-<script src="js/view/headerView.js"></script>
-
-<!-- TODO: Here you should include JS code for your other views -->
+    <!-- The application JavaScript code -->
+    <script src="js/app.js"></script>
+    <script src="js/model/dinnerModel.js"></script>
+    <script src="js/view/exampleView.js"></script>
+    <script src="js/view/selectDishView.js"></script>
+    <script src="js/view/selectDishAgainView.js"></script>
+    <script src="js/view/dinnerPrintoutView.js"></script>
+    <script src="js/view/dishDetailsView.js"></script>
+    <script src="js/view/dishOverviewView.js"></script>
+    <script src="js/view/menu.js"></script>
+    <script src="js/view/headerView.js"></script>
+    <!-- TODO: Here you should include JS code for your other views -->
 </body>
 </html>

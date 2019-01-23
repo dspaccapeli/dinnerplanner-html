@@ -2,8 +2,6 @@ let DishOverviewView = function (container, model) {
 
     //var numberOfGuests = container.find("#people");
 
-    //In the real one it should be the menu
-    // let menuDict = model.getFullMenu();
     let menuArray = model.getFullMenu();
 
     let numOfPeople = model.getNumberOfGuests();
