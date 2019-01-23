@@ -13,6 +13,10 @@ $(function() {
 
 	var dinnerPrintoutView = new DinnerPrintoutView($("#dinnerPrintout_content"), model);
 
+	var dishDetailsView = new DishDetailsView($("#dish_content"), model);
+
+	var dishOverviewView = new DishOverviewView($("#overview_content"), model);
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
