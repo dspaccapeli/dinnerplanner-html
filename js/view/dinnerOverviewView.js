@@ -1,7 +1,5 @@
 let DinnerOverviewView = function (container, model) {
 
-    //var numberOfGuests = container.find("#people");
-
     let menuArray = model.getFullMenu();
 
     let numOfPeople = model.getNumberOfGuests();
