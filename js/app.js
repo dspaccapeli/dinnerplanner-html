@@ -3,7 +3,9 @@ $(function() {
 	var model = new DinnerModel();
 	model.setNumberOfGuests(3);
 	model.addDishToMenu(1);
-	
+	model.addDishToMenu(102);
+	model.addDishToMenu(202);
+
 	// And create the instance of ExampleView
 	var exampleView = new ExampleView($("#exampleView"));
 
@@ -16,6 +18,10 @@ $(function() {
 	var dishDetailsView = new DishDetailsView($("#dish_content"), model);
 
 	var dishOverviewView = new DishOverviewView($("#overview_content"), model);
+
+	let headerView = new HeaderView($("#header"), model);
+
+	let topbarView = new TopbarView($("#topbar"), model);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

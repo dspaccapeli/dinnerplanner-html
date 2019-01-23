@@ -4,10 +4,7 @@ let DishOverviewView = function (container, model) {
 
     //In the real one it should be the menu
     // let menuDict = model.getFullMenu();
-    let menuArray = [];
-    menuArray.push(model.getAllDishes("starter")[0]);
-    menuArray.push(model.getAllDishes("main dish")[0]);
-    menuArray.push(model.getAllDishes("dessert")[0]);
+    let menuArray = model.getFullMenu();
 
     let numOfPeople = model.getNumberOfGuests();
 
@@ -15,15 +12,8 @@ let DishOverviewView = function (container, model) {
 
     let HTMLString = "";
 
-    let firstRow = container.find("#numOfPeople");
-
-    HTMLString += "<h3>My Dinner: " + numOfPeople + " people</h3>";
-
-    firstRow.html(HTMLString);
-
     let midColumn = container.find("#dishes");
 
-    HTMLString = "";
 
     HTMLString += "<div class=\"row align-items-end\">";
 
