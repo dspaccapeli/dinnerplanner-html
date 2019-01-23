@@ -25,7 +25,7 @@ var DinnerPrintoutView = function (container, model) {
         string += entry.type;
         string += "</p></div><div class='col-md-5'><h4>Preparation</h4><p class='body_text' id='randomText2'>";
         string += entry.description;
-        string += "</p></div></div>";
+        string += "</p></div></div><hr>";
     });
 
     menu_items.html(string);

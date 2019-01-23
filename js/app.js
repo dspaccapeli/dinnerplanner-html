@@ -17,13 +17,11 @@ $(function() {
 
     var dishDetailsView = new DishDetailsView($("#dish_content"), model);
 
-    var dishOverviewView = new DishOverviewView($("#overview_content"), model);
+    var dishOverviewView = new DinnerOverviewView($("#overview_content"), model);
 
     let headerView = new HeaderView($("#header"), model);
 
     let topbarView = new TopbarView($("#topbar"), model);
-
-/
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

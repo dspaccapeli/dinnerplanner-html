@@ -1,4 +1,4 @@
-let DishOverviewView = function (container, model) {
+let DinnerOverviewView = function (container, model) {
 
     //var numberOfGuests = container.find("#people");
 
