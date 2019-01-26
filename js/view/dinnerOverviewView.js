@@ -8,9 +8,11 @@ let DinnerOverviewView = function (container, model) {
 
     let HTMLString = "";
 
-    let midColumn = container.find("#dishes");
+    let bottom = container.find("#dishOverview_content");
 
-
+    HTMLString += "<div class=\"row\">" +
+        "<div id=\"menuOverview\" class=\"col-md-4\"></div>" +
+        "<div id=\"dishes\" class=\"col-md-4\" style=\"padding-top: 10px;\">";
     HTMLString += "<div class=\"row align-items-end\">";
 
     //forEach
@@ -30,17 +32,31 @@ let DinnerOverviewView = function (container, model) {
         HTMLString += "<div align=\"right\">" + price + " SEK </div></div>";
     });
 
-    HTMLString += "</div>";
+    HTMLString += "</div></div>" +
+        "<div class=\"col-md-4\" style=\"align-self: flex-end;\">" +
+        "<div style=\"border-left:1px solid lightgray; height:max-content\"></div>" +
+        "<div class=\"row align-items-end\">Total:</div>" +
+        "<div id=\"total\" class=\"row align-items-end\">";
 
-    midColumn.html(HTMLString);
-
-    let right = container.find("#total");
-
-    HTMLString = "";
 
     HTMLString += menuTotal + " SEK";
 
-    right.html(HTMLString);
+    HTMLString += "</div></div></div>";
 
+    bottom.html(HTMLString);
+
+    let recipe = container.find("#dishOverview_content");
+
+    HTMLString = "";
+
+    HTMLString += "<div class=\"container-fluid pt-10 pb-10\" id=\"menu\">" +
+        "<div class=\"row\">" +
+        "<div class=\"col\"></div>" +
+        "<div class=\"col\">" +
+        "<div align=\"center\"><button type=\"button\" class=\"btn btn-info\">Print Full Recipe</button></div>" +
+        "</div>" +
+        "<div class=\"col\"></div>" +
+        "</div>" +
+        "</div>"
 
 }
