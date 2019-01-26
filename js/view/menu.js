@@ -2,13 +2,13 @@ let Menu = function (container, model) {
 
     $('#people_number option:contains(' + model.getNumberOfGuests() + ')').prop({selected: true});
 
-    var selectedDish = container.find("#table_body");
+    let selectedDish = container.find("#table_body");
 
-    var menuDict = model.getFullMenu();
+    let menuDict = model.getFullMenu();
     console.log(menuDict);
     console.log(typeof menuDict);
 
-    var stringSelected = "";
+    let stringSelected = "";
 
     menuDict.forEach((entry) => {
         var price = 0;
@@ -26,6 +26,6 @@ let Menu = function (container, model) {
     stringSelected += "</td></tr>";
     selectedDish.html(stringSelected);
 
-    var totalNumField = container.find("#total_navbar");
+    let totalNumField = container.find("#total_navbar");
     totalNumField.html("<h4 class='blue' style='padding-top: 5px;'>SEK " + model.getTotalMenuPrice() + "</h4>");
 }
