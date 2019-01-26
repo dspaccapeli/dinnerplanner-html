@@ -5,8 +5,6 @@ let Menu = function (container, model) {
     let selectedDish = container.find("#table_body");
 
     let menuDict = model.getFullMenu();
-    console.log(menuDict);
-    console.log(typeof menuDict);
 
     let stringSelected = "";
 
