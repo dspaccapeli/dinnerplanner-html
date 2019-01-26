@@ -1,18 +1,5 @@
 var DinnerPrintoutView = function (container, model) {
 
-    let numOfPeople = model.getNumberOfGuests();
-
-    let menuTotal = 0;
-
-    let HTMLString = "";
-
-    let firstRow = container.find("#numOfPeople");
-
-    HTMLString += "<h3>My Dinner: " + numOfPeople + " people</h3>";
-
-    firstRow.html(HTMLString);
-
-    var menu_items = container.find("#menu_items");
     var menuDict = model.getFullMenu();
 
     var string = "";
@@ -28,6 +15,6 @@ var DinnerPrintoutView = function (container, model) {
         string += "</p></div></div><hr>";
     });
 
-    menu_items.html(string);
+    container.html(string);
 
 }

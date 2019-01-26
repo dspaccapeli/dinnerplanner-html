@@ -6,32 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dinner planner</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
+
 <div id="header" class="header" align="center"></div>
-<div class="container-fluid" id="dinnerPrintout_content">
+<div id="overview_content" class="container-fluid" style="padding-left: 0; padding-right: 0;">
     <div id="topbar" style="padding: 10px 10px 10px 10px;"></div>
     <hr>
-    <div id="dinner_printout">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="menu" class="col-md-3 col-sm-4">
+            </div>
+            <div id="dishes" class="col-md-9 col-sm-8" style="padding-top: 10px;">
+            </div>
+            <div id="dinner_printout">
+            </div>
+        </div>
     </div>
-
+    <hr>
+    <div id="print_recipe" style="padding: 10px 10px 10px 10px;">
+        <div class="container-fluid pt-10 pb-10" id="menu">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <div align="center"> <button type="button" class="btn btn-info">Print Full Recipe</button></div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- jQuery -->
-<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+
+<!-- jQuery and Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-<!-- The application JavaScript code -->
+<!-- JavaScript code -->
 <script src="js/app.js"></script>
 <script src="js/model/dinnerModel.js"></script>
-<script src="js/view/exampleView.js"></script>
-<script src="js/view/selectDishView.js"></script>
 <script src="js/view/selectDishAgainView.js"></script>
 <script src="js/view/dinnerPrintoutView.js"></script>
 <script src="js/view/dishDetailsView.js"></script>
@@ -39,7 +58,5 @@
 <script src="js/view/headerView.js"></script>
 <script src="js/view/topbarView.js"></script>
 <script src="js/view/menu.js"></script>
-
-<!-- TODO: Here you should include JS code for your other views -->
 </body>
 </html>

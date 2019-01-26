@@ -1,7 +1,7 @@
 $(function() {
 	//We instantiate our model
 	var model = new DinnerModel();
-    model.setNumberOfGuests(3);
+    model.setNumberOfGuests(5);
     model.addDishToMenu(1);
     model.addDishToMenu(102);
     model.addDishToMenu(202);
@@ -11,9 +11,9 @@ $(function() {
 
     var menu = new Menu($("#menu"), model);
 
-    var selectDishViewAgain = new SelectDishViewAgain($("#selectDish_content"), model);
+    var selectDishViewAgain = new SelectDishViewAgain($("#dishes"), model);
 
-    var dinnerPrintoutView = new DinnerPrintoutView($("#dinnerPrintout_content"), model);
+    var dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
 
     var dishDetailsView = new DishDetailsView($("#dish_content"), model);
 
