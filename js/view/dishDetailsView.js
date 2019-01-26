@@ -7,39 +7,27 @@ let DishDetailsView = function (container, model) {
 
     let HTMLString = "";
 
-    let midColumn = container.find("#name");
+    let midColumn = container.find("#dishes");
 
-    HTMLString += dishDict.name;
+    HTMLString += "<h1 id=\"name\">" + dishDict.name + "</h1>";
 
-    midColumn.html(HTMLString);
-
-    midColumn = container.find("#description");
-
-    HTMLString = "";
-
-    HTMLString += dishDict.description;
-
-    midColumn.html(HTMLString);
-
-    midColumn = container.find("#image");
-
-    HTMLString = "";
+    HTMLString += "<div id=\"image\">";
 
     HTMLString += "<img src='images/" + dishDict.image +  "' alt=\""+ dishDict.name + " class=\"image_responsive\" style=\"width: 100%;\">";
 
-    midColumn.html(HTMLString)
+    HTMLString += "</div>";
 
-    let table = container.find("#numOfPeople")
+    HTMLString += "<p class=\"body_text\" id=\"description\" style=\"padding-left: 0;\">" + dishDict.description + "</p>";
 
-    HTMLString = "";
+    HTMLString += "<button type=\"button\" class=\"btn btn-warning\">back to search</button>";
 
-    HTMLString += "INGREDIENTS FOR " + numOfPeople + " PEOPLE";
+    midColumn.html(HTMLString);
 
-    table.html(HTMLString);
+    let ingredients = container.find("#ingredients");
 
-    table = container.find("#table");
+    HTMLString = "<h3 id=\"numOfPeople\">"+ "INGREDIENTS FOR " + numOfPeople + " PEOPLE" + "</h3>";
 
-    HTMLString = "";
+    HTMLString += "<div><table id=\"table\" class=\"table\">";
 
     HTMLString += "<tbody>";
 
@@ -58,11 +46,17 @@ let DishDetailsView = function (container, model) {
 
     HTMLString += "</tbody>";
 
-    table.html(HTMLString);
+    HTMLString += "</table>";
 
-    table = container.find("#total");
+    HTMLString += "</div><div id=\"add_price\" class=\"row\">";
 
-    HTMLString = "SEK " + total;
+    HTMLString += "<div class=\"col-5\">" +
+        "<div align=\"center\"><button type=\"button\" class=\"btn btn-warning\">add to menu</button></div>" +
+        "</div>" +
+        "<div class=\"col-3\"></div>" +
+        "<div id=\"total\" class=\"col-3\">";
 
-    table.html(HTMLString);
+    HTMLString += "SEK " + total + "</div>";
+
+    ingredients.html(HTMLString);
 }

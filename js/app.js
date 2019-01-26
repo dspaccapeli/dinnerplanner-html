@@ -17,7 +17,7 @@ $(function() {
 
     var dishDetailsView = new DishDetailsView($("#dish_content"), model);
 
-    var dishOverviewView = new DinnerOverviewView($("#overview_content"), model);
+    var dinnerOverviewView = new DinnerOverviewView($("#overview_content"), model);
 
     let headerView = new HeaderView($("#header"), model);
 
