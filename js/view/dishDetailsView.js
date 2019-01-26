@@ -7,7 +7,7 @@ let DishDetailsView = function (container, model) {
 
     let HTMLString = "";
 
-    let midColumn = container.find("#dishes");
+    let midColumn = container.find("#dish");
 
     HTMLString += "<h1 id=\"name\">" + dishDict.name + "</h1>";
 

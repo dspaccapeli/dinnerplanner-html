@@ -5,9 +5,6 @@ $(function() {
     model.addDishToMenu(1);
     model.addDishToMenu(102);
     model.addDishToMenu(202);
-	
-	// And create the instance of ExampleView
-	var exampleView = new ExampleView($("#exampleView"));
 
     var menu = new Menu($("#menu"), model);
 
@@ -15,9 +12,9 @@ $(function() {
 
     var dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
 
-    var dishDetailsView = new DishDetailsView($("#dish_content"), model);
+    var dishDetailsView = new DishDetailsView($("#content"), model);
 
-    var dinnerOverviewView = new DinnerOverviewView($("#overview_content"), model);
+    var dinnerOverviewView = new DinnerOverviewView($("#content"), model);
 
     let headerView = new HeaderView($("#header"), model);
 
