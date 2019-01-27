@@ -6,19 +6,25 @@ $(function() {
     model.addDishToMenu(102);
     model.addDishToMenu(202);
 
-    var menu = new Menu($("#menu"), model);
-
-    var selectDishViewAgain = new SelectDishViewAgain($("#dishes"), model);
-
-    var dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
-
-    var dishDetailsView = new DishDetailsView($("#content"), model);
-
-    var dinnerOverviewView = new DinnerOverviewView($("#content"), model);
-
     let headerView = new HeaderView($("#header"), model);
 
     let topbarView = new TopbarView($("#topbar"), model);
+    var topbarCtrl = new TopbarCtrl(topbarView, model, this);
+
+    var menu = new Menu($("#menu"), model);
+    var menuCtrl = new MenuCtrl(menu, model, this);
+
+    var selectDishAgainView = new SelectDishAgainView($("#dishes"), model);
+    var selectDishAgainCtrl = new SelectDishAgainCtrl(selectDishAgainView, model, this);
+
+    var dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
+    var dinnerPrintoutCtrl = new DinnerPrintoutCtrl(dinnerPrintoutView, model, this);
+
+    var dishDetailsView = new DishDetailsView($("#content"), model);
+    var dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, this);
+
+    var dinnerOverviewView = new DinnerOverviewView($("#content"), model);
+    var dinnerOverviewCtrl = new DinnerOverviewCtrl(dinnerOverviewView, model, this);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
