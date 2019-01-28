@@ -1,7 +1,7 @@
 let DishDetailsCtrl = function (view, model, generalStateCtrl) {
 
     view.backToSearchButton.click(function () {
-        // TODO: open selectDishAgain again
+        generalStateCtrl.showSelect();
     });
 
     view.addToMenuButton.click(function () {

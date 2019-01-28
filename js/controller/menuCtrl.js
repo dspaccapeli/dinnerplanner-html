@@ -1,6 +1,6 @@
 let MenuCtrl = function (view, model, generalStateCtrl) {
     view.confirmButton.click(function () {
-        // TODO: show dinnerOverview view
+        generalStateCtrl.showOverview();
     });
 
     view.peopleSelect.change(function() {

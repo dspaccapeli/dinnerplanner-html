@@ -47,7 +47,7 @@ let DinnerOverviewView = function (container, model) {
 
         bottom.html(HTMLString);
 
-        let recipe = container.find("#dishOverview_content");
+        let printbutton = container.find("#print_recipe");
 
         HTMLString = "";
 
@@ -60,6 +60,8 @@ let DinnerOverviewView = function (container, model) {
             "<div class=\"col\"></div>" +
             "</div>" +
             "</div>";
+
+        printbutton.html(HTMLString);
     }
 
     init();

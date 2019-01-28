@@ -66,19 +66,23 @@ $(function() {
     };
 
     let showDishDetails = function() {
-        $("#content").show();
+        $("#dish").show();
+        $("#ingredients").show();
     };
 
     let hideDishDetails = function() {
-        $("#content").hide();
+        $("#dish").hide();
+        $("#ingredients").hide();
     };
 
     let showDinnerOverview = function() {
-        $("#content").show();
+        $("#dishOverview_content").show();
+        $("#print_recipe").show();
     };
 
     let hideDinnerOverview = function() {
-        $("#content").hide();
+        $("#dishOverview_content").hide();
+        $("#print_recipe").hide();
     };
 
     let hideAllViews = function() {
@@ -113,5 +117,7 @@ $(function() {
         showTopbar();
         showDinnerOverview();
     };
+
+    this.showSelect();
 
 });

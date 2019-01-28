@@ -16,7 +16,7 @@ var SelectDishAgainView = function (container, model) {
             var img = entry.image;
             var id = entry.id;
 
-            HTMLSTring += "<div class='media_box col-md-4 col-sm-4 dish_item' data-dishid='" + id + "'><div class='media-top'><img src='images/";
+            HTMLSTring += "<div class='media_box col-md-4 col-sm-4 dish_item' style='cursor: pointer;' data-dishid='" + id + "'><div class='media-top'><img src='images/";
             HTMLSTring += img;
             HTMLSTring += "' class='media-object' style='width:100%; height: auto;'></div><div class='media-body' align='center'><h4 class='media-heading'>";
             HTMLSTring += name;
