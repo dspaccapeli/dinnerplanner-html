@@ -3,30 +3,30 @@ let DinnerModel = function() {
 
 	let guestNumber = 0;
 	let menu = [];
-	var chosenDish = 1;
+	let chosenDish = 1;
 
 
 	// observer code
-	var observers = [];
+	let observers = [];
 	this.addObserver = function (observer) {
 		observers.push(observer);
-	}
+	};
 	this.notifyObservers = function (changeDetails) {
 		for (var i = 0; i < observers.length; i++)
 			observers[i](this, changeDetails);
-	}
+	};
 	this.removeObserver = function (observer) {
 		for (var i = 0; i < observers.length; i++) {
 			if (observers[i] === observer) {
 				observers.splice(i, 1);
 			}
 		}
-	}
+	};
 
 	this.setChosenDish = function (id) {
 		chosenDish = id;
 		this.notifyObservers("chosenDish");
-	}
+	};
 	this.getChosenDish = function() {
 		//get the global variable
 		return this.getDish(chosenDish);

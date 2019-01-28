@@ -1,6 +1,6 @@
 $(function() {
 	//We instantiate our model
-	var model = new DinnerModel();
+    let model = new DinnerModel();
     model.setNumberOfGuests(5);
     model.addDishToMenu(1);
     model.addDishToMenu(102);
@@ -9,22 +9,22 @@ $(function() {
     let headerView = new HeaderView($("#header"), model);
 
     let topbarView = new TopbarView($("#topbar"), model);
-    var topbarCtrl = new TopbarCtrl(topbarView, model, this);
+    let topbarCtrl = new TopbarCtrl(topbarView, model, this);
 
-    var menu = new Menu($("#menu"), model);
-    var menuCtrl = new MenuCtrl(menu, model, this);
+    let menu = new Menu($("#menu"), model);
+    let menuCtrl = new MenuCtrl(menu, model, this);
 
-    var selectDishAgainView = new SelectDishAgainView($("#dishes"), model);
-    var selectDishAgainCtrl = new SelectDishAgainCtrl(selectDishAgainView, model, this);
+    let selectDishAgainView = new SelectDishAgainView($("#dishes"), model);
+    let selectDishAgainCtrl = new SelectDishAgainCtrl(selectDishAgainView, model, this);
 
-    var dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
-    var dinnerPrintoutCtrl = new DinnerPrintoutCtrl(dinnerPrintoutView, model, this);
+    let dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
+    let dinnerPrintoutCtrl = new DinnerPrintoutCtrl(dinnerPrintoutView, model, this);
 
-    var dishDetailsView = new DishDetailsView($("#content"), model);
-    var dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, this);
+    let dishDetailsView = new DishDetailsView($("#content"), model);
+    let dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, this);
 
-    var dinnerOverviewView = new DinnerOverviewView($("#content"), model);
-    var dinnerOverviewCtrl = new DinnerOverviewCtrl(dinnerOverviewView, model, this);
+    let dinnerOverviewView = new DinnerOverviewView($("#content"), model);
+    let dinnerOverviewCtrl = new DinnerOverviewCtrl(dinnerOverviewView, model, this);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
@@ -57,6 +57,14 @@ $(function() {
         $("#topbar").hide();
     };
 
+    let showHome = function() {
+        $("#homeview_content").show();
+    };
+
+    let hideHome = function() {
+        $("#homeview_content").hide();
+    };
+
     let showPrintoutView = function() {
         $("#dinner_printout").show();
     };
@@ -86,6 +94,7 @@ $(function() {
     };
 
     let hideAllViews = function() {
+        hideHome();
         hideMenu();
         hideSelectDish();
         hideTopbar();
@@ -93,6 +102,11 @@ $(function() {
         hideDishDetails();
         hideDinnerOverview();
     };
+
+    this.showHome = function () {
+        hideAllViews();
+        showHome();
+    }
 
     this.showSelect = function() {
         hideAllViews();
@@ -118,6 +132,12 @@ $(function() {
         showDinnerOverview();
     };
 
-    this.showSelect();
+    this.showHome();
+
+    let showCall = this.showSelect;
+
+    $("#createNewDinner").click(function () {
+        showCall();
+    });
 
 });

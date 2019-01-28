@@ -95,7 +95,7 @@ let DinnerOverviewView = function (container, model) {
 
         totalDiv.html(menuTotal + " SEK");
 
-    }
+    };
     model.addObserver(this.update);
 
 }
