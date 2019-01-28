@@ -1,62 +1,83 @@
 let DishDetailsView = function (container, model) {
 
-    //In the real one it should be the selected one
-    let dishDict = model.getDish(1);
+    function dishHTML(dishDict) {
+        let HTMLString = "";
+        HTMLString += "<h1 id=\"name\">" + dishDict.name + "</h1>";
+        HTMLString += "<div id=\"image\">";
+        HTMLString += "<img src='images/" + dishDict.image +  "' alt=\""+ dishDict.name + " class=\"image_responsive\" style=\"width: 100%;\">";
+        HTMLString += "</div>";
+        HTMLString += "<p class=\"body_text\" id=\"description\" style=\"padding-left: 0;\">" + dishDict.description + "</p>";
 
-    let numOfPeople = model.getNumberOfGuests();
+        return HTMLString;
+    }
 
-    let HTMLString = "";
+    function ingredientsHTML(numOfPeople, dishDict) {
+        let HTMLString = "";
+        HTMLString = "<h3 id=\"numOfPeople\">"+ "INGREDIENTS FOR " + numOfPeople + " PEOPLE" + "</h3>";
+        HTMLString += "<div><table id=\"table\" class=\"table\">";
+        HTMLString += "<tbody>";
 
-    let midColumn = container.find("#dish");
+        let total = 0;
 
-    HTMLString += "<h1 id=\"name\">" + dishDict.name + "</h1>";
+        (dishDict.ingredients).forEach((entry) => {
+            let quantity = entry.quantity*numOfPeople;
+            let price = entry.price*numOfPeople;
+            total += price;
+            HTMLString += "<tr>";
+            HTMLString += "<td>" + quantity + " " + entry.unit + "</td>";
+            HTMLString += "<td>" + entry.name + "</td>";
+            HTMLString += "<td>SEK " + price + "</td>";
+            HTMLString += "</tr>"
+        });
 
-    HTMLString += "<div id=\"image\">";
+        HTMLString += "</tbody>";
+        HTMLString += "</table>";
+        HTMLString += "</div>";
 
-    HTMLString += "<img src='images/" + dishDict.image +  "' alt=\""+ dishDict.name + " class=\"image_responsive\" style=\"width: 100%;\">";
+        return [HTMLString, total];
+    }
 
-    HTMLString += "</div>";
+    var init = function () {
+        let dishDict = model.getChosenDish();
+        let numOfPeople = model.getNumberOfGuests();
+        let dishDiv = container.find("#dish");
+        let ingredientsDiv = container.find("#ingredients");
 
-    HTMLString += "<p class=\"body_text\" id=\"description\" style=\"padding-left: 0;\">" + dishDict.description + "</p>";
+        var html = "<div id='dish_description'>";
+        html += dishHTML(dishDict);
+        html += "</div><button type=\"button\" class=\"btn btn-warning\" id='backToSearch'>Back to search</button>";
+        dishDiv.html(html);
 
-    HTMLString += "<button type=\"button\" class=\"btn btn-warning\">back to search</button>";
+        var html2 = "<div id='ingredients1'>";
+        html2 += ingredientsHTML(numOfPeople, dishDict)[0];
+        html2 += "</div><div id=\"add_price\" class=\"row\"><div class=\"col-5\">"
+        html2 += "<div align=\"center\"><button type=\"button\" class=\"btn btn-warning\" id='addToMenu'>Add to menu</button></div>";
+        html2 += "</div><div class=\"col-3\"></div><div id=\"total_ingredients\" class=\"col-3\">";
+        html2 += "SEK " + ingredientsHTML(numOfPeople, dishDict)[1] + "</div>";
 
-    midColumn.html(HTMLString);
+        ingredientsDiv.html(html2);
+    }
 
-    let ingredients = container.find("#ingredients");
+    init();
 
-    HTMLString = "<h3 id=\"numOfPeople\">"+ "INGREDIENTS FOR " + numOfPeople + " PEOPLE" + "</h3>";
+    this.backToSearchButton = container.find("#backToSearch");
+    this.addToMenuButton = container.find("#addToMenu");
 
-    HTMLString += "<div><table id=\"table\" class=\"table\">";
+    this.update = function(model, changeDetails) {
+        let dishDict = model.getChosenDish();
+        let numOfPeople = model.getNumberOfGuests();
+        let dishDiv = container.find("#dish_description");
+        let ingredientsDiv = container.find("#ingredients1");
+        let totalIngredients = container.find("#total_ingredients");
 
-    HTMLString += "<tbody>";
+        // update main dish information
+        dishDiv.html(dishHTML(dishDict));
 
-    let total = 0;
+        // update ingredients information
+        ingredientsDiv.html(ingredientsHTML(numOfPeople, dishDict)[0]);
+        totalIngredients.html("SEK " + ingredientsHTML(numOfPeople, dishDict)[1]);
+    }
 
-    (dishDict.ingredients).forEach((entry) => {
-        let quantity = entry.quantity*numOfPeople;
-        let price = entry.price*numOfPeople;
-        total += price;
-        HTMLString += "<tr>";
-        HTMLString += "<td>" + quantity + " " + entry.unit + "</td>";
-        HTMLString += "<td>" + entry.name + "</td>";
-        HTMLString += "<td>SEK " + price + "</td>";
-        HTMLString += "</tr>"
-    });
+    model.addObserver(this.update);
 
-    HTMLString += "</tbody>";
-
-    HTMLString += "</table>";
-
-    HTMLString += "</div><div id=\"add_price\" class=\"row\">";
-
-    HTMLString += "<div class=\"col-5\">" +
-        "<div align=\"center\"><button type=\"button\" class=\"btn btn-warning\">add to menu</button></div>" +
-        "</div>" +
-        "<div class=\"col-3\"></div>" +
-        "<div id=\"total\" class=\"col-3\">";
-
-    HTMLString += "SEK " + total + "</div>";
-
-    ingredients.html(HTMLString);
 }

@@ -1,15 +1,40 @@
 //DinnerModel Object constructor
 let DinnerModel = function() {
- 
-	//TODO Lab 1 implement the data structure that will hold number of guest
-	// and selected dishes for the dinner menu
+
 	let guestNumber = 0;
 	let menu = [];
+	var chosenDish = 1;
 
 
+	// observer code
+	var observers = [];
+	this.addObserver = function (observer) {
+		observers.push(observer);
+	}
+	this.notifyObservers = function (changeDetails) {
+		for (var i = 0; i < observers.length; i++)
+			observers[i](this, changeDetails);
+	}
+	this.removeObserver = function (observer) {
+		for (var i = 0; i < observers.length; i++) {
+			if (observers[i] === observer) {
+				observers.splice(i, 1);
+			}
+		}
+	}
+
+	this.setChosenDish = function (id) {
+		chosenDish = id;
+		this.notifyObservers("chosenDish");
+	}
+	this.getChosenDish = function() {
+		//get the global variable
+		return this.getDish(chosenDish);
+	};
 	this.setNumberOfGuests = function(num) {
 		//set the global variable
 		guestNumber = num;
+		this.notifyObservers("changeGuests");
 	};
 	
 	this.getNumberOfGuests = function() {
@@ -66,6 +91,7 @@ let DinnerModel = function() {
 		});
 		newMenu.push(toAdd);
 		menu = newMenu;
+		this.notifyObservers("addedToMenu");
 	};
 
 	//Removes dish from menu
