@@ -1,10 +1,8 @@
 $(function() {
 	//We instantiate our model
     let model = new DinnerModel();
-    model.setNumberOfGuests(5);
-    model.addDishToMenu(1);
-    model.addDishToMenu(102);
-    model.addDishToMenu(202);
+    model.setNumberOfGuests(1);
+
 
     let headerView = new HeaderView($("#header"), model);
 

@@ -34,7 +34,10 @@ let Menu = function (container, model) {
 
         container.html(stringSelected);
 
-        $('#people_number option:contains(' + model.getNumberOfGuests() + ')').prop({selected: true});
+        //$('#people_number option:contains(' + model.getNumberOfGuests() + ')').prop({selected: true});
+        $('#people_number').filter(function() {
+            return $(this).text() === model.getNumberOfGuests();
+        }).prop({selected: true});
     }
 
     init();
