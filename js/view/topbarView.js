@@ -22,7 +22,6 @@ let TopbarView = function (container, model) {
 
     this.update = function(model, changeDetails) {
         var numberPeople = container.find("#numOfPeople");
-
         numberPeople.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3>");
     }
 

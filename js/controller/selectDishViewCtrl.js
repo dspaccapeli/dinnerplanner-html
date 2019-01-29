@@ -1,4 +1,4 @@
-var SelectDishAgainCtrl = function (view, model, generalStateCtrl) {
+var SelectDishViewCtrl = function (view, model, generalStateCtrl) {
 
     view.dishList.on("click", '.dish_item', function() {
         model.setChosenDish($(this).data('dishid'));
@@ -12,11 +12,11 @@ var SelectDishAgainCtrl = function (view, model, generalStateCtrl) {
     view.typeFilter.click(function(){
         view.typeValue.html($(this).html() + "<span class='caret'></span>");
         view.typeValue.data('type', $(this).html());
-        //view.update(model, "filtering");
+        view.update(model, "searching");
     });
 
     view.keywords.keyup(function(){
-        //view.update(model, "keywords");
+        view.update(model, "searching");
     });
 
 }

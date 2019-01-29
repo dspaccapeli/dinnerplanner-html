@@ -5,24 +5,19 @@ $(function() {
 
 
     let headerView = new HeaderView($("#header"), model);
-
     let topbarView = new TopbarView($("#topbar"), model);
-    let topbarCtrl = new TopbarCtrl(topbarView, model, this);
-
-    let menu = new Menu($("#menu"), model);
-    let menuCtrl = new MenuCtrl(menu, model, this);
-
-    let selectDishAgainView = new SelectDishAgainView($("#dishes"), model);
-    let selectDishAgainCtrl = new SelectDishAgainCtrl(selectDishAgainView, model, this);
-
+    let menuView = new MenuView($("#menu"), model);
+    let selectDishView = new SelectDishView($("#dishes"), model);
     let dinnerPrintoutView = new DinnerPrintoutView($("#dinner_printout"), model);
-    let dinnerPrintoutCtrl = new DinnerPrintoutCtrl(dinnerPrintoutView, model, this);
-
     let dishDetailsView = new DishDetailsView($("#content"), model);
-    let dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, this);
-
     let dinnerOverviewView = new DinnerOverviewView($("#content"), model);
-    let dinnerOverviewCtrl = new DinnerOverviewCtrl(dinnerOverviewView, model, this);
+
+    let topbarViewCtrl = new TopbarViewCtrl(topbarView, model, this);
+    let menuViewCtrl = new MenuViewCtrl(menuView, model, this);
+    let selectDishViewCtrl = new SelectDishViewCtrl(selectDishView, model, this);
+    let dinnerPrintoutViewCtrl = new DinnerPrintoutViewCtrl(dinnerPrintoutView, model, this);
+    let dishDetailsViewCtrl = new DishDetailsViewCtrl(dishDetailsView, model, this);
+    let dinnerOverviewViewCtrl = new DinnerOverviewViewCtrl(dinnerOverviewView, model, this);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

@@ -114,22 +114,22 @@ let DinnerModel = function() {
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
+	this.getAllDishes = function (type, filter) {
 	  return dishes.filter(function(dish) {
 		let found = true;
 		if (filter && filter != "") {
 			found = false;
 			dish.ingredients.forEach(function(ingredient) {
-				if (ingredient.name.indexOf(filter)!=-1) {
+				if (ingredient.name.toLowerCase().indexOf(filter.toLowerCase())!= -1) {
 					found = true;
 				}
 			});
-			if (dish.name.indexOf(filter) != -1)
-			{
+			if (dish.name.toLowerCase().indexOf(filter.toLowerCase()) != -1) {
 				found = true;
 			}
 		}
-		if (type != "All") {
+		console.log(type);
+		if (type != "All" && type != undefined) {
 			return dish.type == type && found;
 		}
 	  	return found;

@@ -1,4 +1,4 @@
-let Menu = function (container, model) {
+let MenuView = function (container, model) {
 
     var init = function () {
         var viewHTML = "<div class='row' style='padding-top: 5px;'><div class='col-sm-10 col-md-10 col-5'><h3>My Dinner</h3></div>"
@@ -34,7 +34,7 @@ let Menu = function (container, model) {
 
         container.html(stringSelected);
 
-        //$('#people_number option:contains(' + model.getNumberOfGuests() + ')').prop({selected: true});
+        // change number of guests
         $('#people_number').filter(function() {
             return $(this).text() === model.getNumberOfGuests();
         }).prop({selected: true});
@@ -48,7 +48,9 @@ let Menu = function (container, model) {
     this.update = function(model, changeDetails) {
 
         // change number of guests
-        $('#people_number option:contains(' + model.getNumberOfGuests() + ')').prop({selected: true});
+        $('#people_number').filter(function() {
+            return $(this).text() === model.getNumberOfGuests();
+        }).prop({selected: true});
 
         // change menu
         let tableDiv = container.find("#table_body");

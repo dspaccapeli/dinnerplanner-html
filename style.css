@@ -15,6 +15,15 @@
 .padding {
     margin-top: 110px!important;
 }
+.padding_5 {
+    padding: 5px;
+}
+.padding_10 {
+    padding: 10px;
+}
+.margin_5 {
+    margin: 5px;
+}
 
 @media screen and (min-width:576px) {
     #lalala {

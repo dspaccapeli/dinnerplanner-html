@@ -1,4 +1,4 @@
-let DishDetailsCtrl = function (view, model, generalStateCtrl) {
+let DishDetailsViewCtrl = function (view, model, generalStateCtrl) {
 
     view.backToSearchButton.click(function () {
         generalStateCtrl.showSelect();

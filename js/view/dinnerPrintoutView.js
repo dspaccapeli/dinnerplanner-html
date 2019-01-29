@@ -5,7 +5,7 @@ var DinnerPrintoutView = function (container, model) {
 
         var string = "";
         menuDict.forEach((entry) => {
-            string += "<div class='row'><div class='media_box col-md-3 col-sm-4' style='vertical-align: middle;'><div class='media-top'><img src='images/";
+            string += "<div class='row'><div class='media_box col-md-3 col-sm-4' style='vertical-align: middle;'><div class='media-top padding_5'><img src='images/";
             string += entry.image;
             string += "' class='media-object' style='width:100%; height: auto;'></div></div><div class='col-md-4 col-sm-8' id='dish'><h3>";
             string += entry.name;

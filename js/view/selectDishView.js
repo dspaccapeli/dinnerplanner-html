@@ -1,24 +1,59 @@
-var SelectDishView = function (container, model) {
+let SelectDishView = function (container, model) {
 
-    //var numberOfGuests = container.find("#people");
+    let init = function () {
+        let viewHTML = "<h3 align='center'>FIND A DISH</h3><hr><div class='row'><div class='form-group col-sm-4'>"
+            + "<input type='text' class='form-control' id='keywords' placeholder='Enter key words'></div><div class='dropdown col-sm-4'>"
+            + "<button class='btn btn-info btn-block dropdown-toggle' type='button' data-toggle='dropdown' id='dropdownSelected'>All<span class='caret'></span></button>"
+            + "<ul id='typeFilter' class='dropdown-menu'><li><a href='#'>All</a></li><li><a href='#'>starter</a></li><li><a href='#'>main dish</a></li>"
+            + "<li><a href='#'>dessert</a></li></ul></div><div class='col-sm-4' align='center' style='padding-top: 5px;'>"
+            + "<button id='search_button' class='btn btn-info' type='button'>Search</button></div></div><hr><br><div class='row align-items-center' id='dish_again_list'></div>";
 
-    var dishes = container.find("#dish_list");
+        container.html(viewHTML);
+        let dishDict = model.getAllTypes();
 
-    var dishDict = model.getAllTypes();
+        let dishList = container.find("#dish_again_list");
 
-    var HTMLSTring = "";
-    dishDict.forEach((entry) => {
-       var name = entry.name;
-       var img = entry.image;
+        dishDict.forEach((entry) => {
+            let name = entry.name;
+            let img = entry.image;
+            let id = entry.id;
+            let dishItem = new DishItemView(dishList, model, id, name, img);
+        });
+    };
 
-        HTMLSTring += "<div class='media_box col-md-4 col-sm-4'><div class='media-top'><img src='images/";
-        HTMLSTring += img;
-        HTMLSTring += "' class='media-object' style='width:100%; height: auto;'></div><div class='media-body' align='center'><h4 class='media-heading'>";
-        HTMLSTring += name;
-        HTMLSTring += "</h4></div></div>";
-    });
+    init();
 
-    dishes.html(HTMLSTring);
+    this.dishList = container.find("#dish_again_list");
+    this.searchButton = container.find("#search_button");
+    this.keywords = container.find("#keywords");
+    this.typeValue = container.find("#dropdownSelected");
+    this.typeFilter = container.find("#typeFilter li a");
 
-}
+    this.update = function (model, changeDetails) {
 
+        if (changeDetails == "searching") {
+            let searchWords = this.keywords.val();
+            let type = this.typeValue.data('type');
+
+            let dishDict = model.getAllTypes();
+
+            dishDict = model.getAllDishes(type, searchWords);
+
+            this.dishList.html("");
+
+            dishDict.forEach((entry) => {
+                let name = entry.name;
+                let img = entry.image;
+                let id = entry.id;
+                let dishItem = new DishItemView(this.dishList, model, id, name, img);
+            });
+
+            if (Object.keys(dishDict).length === 0) {
+                this.dishList.html("No dishes matching this criteria were found.");
+            }
+        }
+
+    };
+    model.addObserver(this.update);
+
+};

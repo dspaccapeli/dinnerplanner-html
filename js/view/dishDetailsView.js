@@ -13,8 +13,8 @@ let DishDetailsView = function (container, model) {
 
     function ingredientsHTML(numOfPeople, dishDict) {
         let HTMLString = "";
-        HTMLString = "<h3 id=\"numOfPeople\">"+ "INGREDIENTS FOR " + numOfPeople + " PEOPLE" + "</h3>";
-        HTMLString += "<div><table id=\"table\" class=\"table\">";
+        HTMLString = "<h3 id=\"numOfPeople\" align='center' class='padding_10'>"+ "INGREDIENTS FOR " + numOfPeople + " PEOPLE" + "</h3>";
+        HTMLString += "<div class='padding_5'><table id=\"table\" class=\"table\">";
         HTMLString += "<tbody>";
 
         let total = 0;
@@ -48,7 +48,7 @@ let DishDetailsView = function (container, model) {
         html += "</div><button type=\"button\" class=\"btn btn-warning\" id='backToSearch'>Back to search</button>";
         dishDiv.html(html);
 
-        var html2 = "<div id='ingredients1'>";
+        var html2 = "<div id='ingredients1' class='margin_5'>";
         html2 += ingredientsHTML(numOfPeople, dishDict)[0];
         html2 += "</div><div id=\"add_price\" class=\"row\"><div class=\"col-5\">"
         html2 += "<div align=\"center\"><button type=\"button\" class=\"btn btn-warning\" id='addToMenu'>Add to menu</button></div>";
