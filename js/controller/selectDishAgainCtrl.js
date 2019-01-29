@@ -5,6 +5,18 @@ var SelectDishAgainCtrl = function (view, model, generalStateCtrl) {
         generalStateCtrl.showDetails();
     });
 
-    // TODO: dropdown dynamics
+    view.searchButton.click(function(){
+        view.update(model, "searching");
+    });
+
+    view.typeFilter.click(function(){
+        view.typeValue.html($(this).html() + "<span class='caret'></span>");
+        view.typeValue.data('type', $(this).html());
+        //view.update(model, "filtering");
+    });
+
+    view.keywords.keyup(function(){
+        //view.update(model, "keywords");
+    });
 
 }

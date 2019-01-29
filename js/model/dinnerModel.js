@@ -117,19 +117,22 @@ let DinnerModel = function() {
 	this.getAllDishes = function (type,filter) {
 	  return dishes.filter(function(dish) {
 		let found = true;
-		if(filter){
+		if (filter && filter != "") {
 			found = false;
 			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
+				if (ingredient.name.indexOf(filter)!=-1) {
 					found = true;
 				}
 			});
-			if(dish.name.indexOf(filter) != -1)
+			if (dish.name.indexOf(filter) != -1)
 			{
 				found = true;
 			}
 		}
-	  	return dish.type == type && found;
+		if (type != "All") {
+			return dish.type == type && found;
+		}
+	  	return found;
 	  });	
 	}
 
