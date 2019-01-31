@@ -1,4 +1,4 @@
-var SelectDishViewCtrl = function (view, model, generalStateCtrl) {
+let SelectDishViewCtrl = function (view, model, generalStateCtrl) {
 
     view.dishList.on("click", '.dish_item', function() {
         model.setChosenDish($(this).data('dishid'));
@@ -9,6 +9,7 @@ var SelectDishViewCtrl = function (view, model, generalStateCtrl) {
         view.update(model, "searching");
     });
 
+    //this is what we did for the clickable items and search
     view.typeFilter.click(function(){
         view.typeValue.html($(this).html() + "<span class='caret'></span>");
         view.typeValue.data('type', $(this).html());
