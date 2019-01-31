@@ -23,25 +23,32 @@ let DinnerModel = function() {
 		}
 	};
 
+	// neza
 	this.setChosenDish = function (id) {
 		chosenDish = id;
 		this.notifyObservers("chosenDish");
 	};
+
+	// daniele
 	this.getChosenDish = function() {
 		//get the global variable
 		return this.getDish(chosenDish);
 	};
+
+	// neza
 	this.setNumberOfGuests = function(num) {
 		//set the global variable
 		guestNumber = num;
 		this.notifyObservers("changeGuests");
 	};
-	
+
+	// daniele
 	this.getNumberOfGuests = function() {
 		//get the global variable
 		return guestNumber;
 	};
 
+	// neza
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		let dishReturn;
@@ -53,11 +60,13 @@ let DinnerModel = function() {
 		return dishReturn;
 	};
 
+	// daniele
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		return menu;
 	};
 
+	// neza
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		let allIngredients = [];
@@ -69,6 +78,7 @@ let DinnerModel = function() {
 		return allIngredients;
 	};
 
+	// daniele
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		//return the dishes as an array string (ingredients)
@@ -79,6 +89,7 @@ let DinnerModel = function() {
 		return totalMenuPrice*guestNumber;
 	};
 
+	// neza
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
@@ -94,6 +105,7 @@ let DinnerModel = function() {
 		this.notifyObservers("addedToMenu");
 	};
 
+	// daniele
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		let toAdd = this.getDish(id);
@@ -106,11 +118,12 @@ let DinnerModel = function() {
 		menu = newMenu;
 	};
 
-
+	// neza
 	this.getAllTypes = function() {
 		return dishes;
-	}
+	};
 
+	// daniele
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
@@ -120,7 +133,7 @@ let DinnerModel = function() {
 		if (filter && filter != "") {
 			found = false;
 			dish.ingredients.forEach(function(ingredient) {
-				if (ingredient.name.indexOf(filter)!=-1) {
+				if (ingredient.name.indexOf(filter) != -1) {
 					found = true;
 				}
 			});
@@ -134,8 +147,9 @@ let DinnerModel = function() {
 		}
 	  	return found;
 	  });	
-	}
+	};
 
+	// neza
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 	  for(key in dishes){
@@ -143,9 +157,10 @@ let DinnerModel = function() {
 				return dishes[key];
 			}
 		}
-	}
+	};
 
 
+	// daniele
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
 	// image (name of the image file), description and
