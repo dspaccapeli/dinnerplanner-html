@@ -15,6 +15,7 @@ let DinnerModel = function() {
 		for (let i = 0; i < observers.length; i++)
 			observers[i](this, changeDetails);
 	};
+
 	this.removeObserver = function (observer) {
 		for (let i = 0; i < observers.length; i++) {
 			if (observers[i] === observer) {
