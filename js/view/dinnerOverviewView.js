@@ -62,7 +62,7 @@ let DinnerOverviewView = function (container, model) {
             "</div>";
 
         printbutton.html(HTMLString);
-    }
+    };
 
     init();
 
