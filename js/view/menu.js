@@ -56,7 +56,7 @@ let Menu = function (container, model) {
         let menuDict = model.getFullMenu();
         let stringSelected = "";
         menuDict.forEach((entry) => {
-            var price = 0;
+            let price = 0;
             entry.ingredients.forEach((entry1) => {
                 price += entry1.price;
             });
@@ -72,7 +72,8 @@ let Menu = function (container, model) {
 
         tableDiv.html(stringSelected);
 
-    }
+    };
+
     model.addObserver(this.update);
 
 }

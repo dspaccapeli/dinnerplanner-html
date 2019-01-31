@@ -12,11 +12,11 @@ let DinnerModel = function() {
 		observers.push(observer);
 	};
 	this.notifyObservers = function (changeDetails) {
-		for (var i = 0; i < observers.length; i++)
+		for (let i = 0; i < observers.length; i++)
 			observers[i](this, changeDetails);
 	};
 	this.removeObserver = function (observer) {
-		for (var i = 0; i < observers.length; i++) {
+		for (let i = 0; i < observers.length; i++) {
 			if (observers[i] === observer) {
 				observers.splice(i, 1);
 			}
