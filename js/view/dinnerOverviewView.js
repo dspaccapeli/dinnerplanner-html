@@ -1,6 +1,6 @@
 let DinnerOverviewView = function (container, model) {
 
-    var init = function () {
+    let init = function () {
 
         let menuArray = model.getFullMenu();
 
