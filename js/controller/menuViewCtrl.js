@@ -1,4 +1,4 @@
-let MenuCtrl = function (view, model, generalStateCtrl) {
+let MenuViewCtrl = function (view, model, generalStateCtrl) {
     view.confirmButton.click(function () {
         generalStateCtrl.showOverview();
     });
