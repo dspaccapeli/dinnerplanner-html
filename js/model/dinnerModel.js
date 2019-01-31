@@ -23,6 +23,22 @@ let DinnerModel = function() {
 		}
 	};
 
+	// help with HTTP errors
+	// fetch is rejected only when there's a network error, not e.g. 404
+	/* USE LIKE THIS
+		fetch("https://api.imgur.com/3/album/xQY8w", {headers:{"authorization":"Client-ID SECRET"}})
+		.then(handleHTTPError)
+		.then(response => response.json())
+		.then(console.log)
+		.catch(console.error);
+
+	 */
+	function handleHTTPError(response) {
+		if(response.ok)
+			return response;
+		throw Error(response.statusText);
+	}
+
 	// neza
 	this.setChosenDish = function (id) {
 		chosenDish = id;
