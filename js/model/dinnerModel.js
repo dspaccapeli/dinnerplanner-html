@@ -256,29 +256,30 @@ let DinnerModel = function() {
 		}]
 	}
 	];
-	/*
+
 	//base search url
-	let search_get_url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
+	let searchGetUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
 	//base image url
-	let img_url = 'https://spoonacular.com/recipeImages/';
+	let baseImgUrl;
+	let apiKeyContent = '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767';
 
 	let init = function() {
 
-		let url = new URL(search_get_url);
+		let url = new URL(searchGetUrl);
 		let params = {number:20};
 
 		// append parameters to the url in the js way
 		Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
-		fetch(url.toString(), {headers:{'X-Mashape-Key':'3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767', method: "GET",}})
+		let fetched = fetch(url.toString(), {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
-			.then(console.log)
 			.catch(console.error);
+
+		baseImgUrl = fetched.then(result => console.log(result.baseUri));
 	};
 
 	init();
-	*/
 
 	// observer code
 	let observers = [];
