@@ -271,13 +271,24 @@ let DinnerModel = function() {
 		// append parameters to the url in the js way
 		Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
-		let fetched = fetch(url.toString(), {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
-			.then(handleHTTPError)
-			.then(response => response.json())
-			.catch(console.error);
+		let fetched;
 
-		baseImgUrl = fetched.then(result => console.log(result.baseUri));
-	};
+        fetch(url.toString(), {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+            .then(handleHTTPError)
+            .then(response => response.json())
+            .then(data => fetched = data)
+            .catch(console.error);
+
+
+		baseImgUrl = fetched.then(result.baseUri);
+
+		//fetch the ingredients
+        let ids = [/* array of the recipes ids */];
+
+        ids.forEach((item, index) => {if(index !== ids.length -1){bulkIds = bulkIds + item + '%2C'}else{bulkIds = bulkIds + item}});
+
+
+    };
 
 	init();
 
