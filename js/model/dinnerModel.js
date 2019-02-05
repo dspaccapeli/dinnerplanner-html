@@ -469,14 +469,23 @@ let DinnerModel = function() {
 	// daniele
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
+		let dish = {};
 		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
-			.then(data => {resultDict.ingredients = this.formattedIngredients(data)});
+			.then(data => {
+				dish.ingredients = this.formattedIngredients(data)
+				dish.id = data.id;
+				dish.name = data.title;
+				dish.type = 'useless';
+				dish.image = data.image;
+			});
 		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
-			.then(data => {resultDict.description = data.summary});
+			.then(data => {dish.description = data.summary});
+
+		return dish;
 	};
 
 	this.formattedResults = function (response) {
