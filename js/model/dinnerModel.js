@@ -364,8 +364,7 @@ let DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		let toAdd;
-		this.getDish(id).then(entry => {
+		this.getDish(id).then(toAdd => {
 			let newMenu = [];
 			menu.forEach((entry) => {
 				if(entry.type !== toAdd.type){
@@ -373,6 +372,7 @@ let DinnerModel = function() {
 				}
 			});
 			newMenu.push(toAdd);
+			console.log("new")
 			menu = newMenu;
 			this.notifyObservers("addedToMenu");
 		});

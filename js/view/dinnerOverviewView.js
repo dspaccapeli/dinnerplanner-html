@@ -8,7 +8,6 @@ let DinnerOverviewView = function (container, model) {
         let HTMLString = "<div class=\"row align-items-end\">";
         menuArray.forEach((entry) => {
             let price = 0;
-            entry.then(data => console.log(data));
             (entry.ingredients).forEach((ingredient) => {
                 price += ingredient.price;
             });
@@ -17,7 +16,7 @@ let DinnerOverviewView = function (container, model) {
             menuTotal += price;
 
             HTMLString += "<div class=\"media_box col-m-4 col-sm-4\" style=\"vertical-align: middle;\"><div class=\"media-top\">";
-            HTMLString += "<img src='images/" + entry.image + "' class=\"media-object\" style=\"width:100%; height: auto;\"></div>";
+            HTMLString += "<img src='" + entry.image + "' class=\"media-object\" style=\"width:100%; height: auto;\"></div>";
             HTMLString += "<div class=\"media-body\" align=\"center\"><h6 class=\"media-heading\">" + entry.name + "</h6></div>";
             HTMLString += "<div align=\"right\">" + price + " SEK </div></div>";
         });

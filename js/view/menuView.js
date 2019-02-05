@@ -55,7 +55,7 @@ let MenuView = function (container, model) {
 
     this.update = function(model, changeDetails) {
         updateGuestNumber();
-        container.find("#table_body1").html("");
+        container.find("#table_body1").html(showDishesOnMenu());
 
     };
 

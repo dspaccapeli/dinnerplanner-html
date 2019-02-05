@@ -6,5 +6,6 @@ let DishDetailsViewCtrl = function (view, model, generalStateCtrl) {
 
     view.addToMenuButton.click(function () {
         model.addDishToMenu(model.getChosenDishId());
+        generalStateCtrl.createNewDinner();
     });
 };
