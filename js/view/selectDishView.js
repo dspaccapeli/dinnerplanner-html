@@ -22,12 +22,12 @@ let SelectDishView = function (container, model) {
         let viewHTML = "<h3 align='center'>FIND A DISH</h3><hr><div class='row'><div class='form-group col-sm-4'>"
             + "<input type='text' class='form-control' id='keywords' placeholder='Enter key words'></div><div class='dropdown col-sm-4'>"
             + "<button class='btn btn-info btn-block dropdown-toggle' type='button' data-toggle='dropdown' id='dropdownSelected'>All<span class='caret'></span></button>"
-            + "<ul id='typeFilter' class='dropdown-menu'><li><a href='#'>All</a></li><li><a href='#'>starter</a></li><li><a href='#'>main dish</a></li>"
-            + "<li><a href='#'>dessert</a></li></ul></div><div class='col-sm-4' align='center' style='padding-top: 5px;'>"
+            + "<ul id='typeFilter' class='dropdown-menu'><li><a href='#'>All</a></li><li><a href='#'>Appetizer</a></li><li><a href='#'>Main Course</a></li>" +
+            "<li><a href='#'>Side Dish</a></li><li><a href='#'>Dessert</a></li><li><a href='#'>Salad</a></li><li><a href='#'>Bread</a></li>" +
+            "<li><a href='#'>Breakfast</a></li><li><a href='#'>Soup</a></li><li><a href='#'>Beverage</a></li><li><a href='#'>Sauce</a></li><li><a href='#'>Drink</a></li>"
+            + "<li><a href='#'>Dessert</a></li></ul></div><div class='col-sm-4' align='center' style='padding-top: 5px;'>"
             + "<button id='search_button' class='btn btn-info' type='button'>Search</button></div></div><hr><br><div class='row align-items-center' id='dish_again_list'><div class='loading'></div></div>";
-
         container.html(viewHTML);
-        console.log()
         this.dishList = container.find("#dish_again_list");
 
         // TODO: API connect

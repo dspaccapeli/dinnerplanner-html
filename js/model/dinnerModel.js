@@ -367,9 +367,7 @@ let DinnerModel = function() {
 		this.getDish(id).then(toAdd => {
 			let newMenu = [];
 			menu.forEach((entry) => {
-				if(entry.type !== toAdd.type){
-					newMenu.push(entry)
-				}
+				newMenu.push(entry);
 			});
 			newMenu.push(toAdd);
 			console.log("new")
@@ -425,18 +423,8 @@ let DinnerModel = function() {
 	  	return found;
 	  });
 	  */
-
-	  	//https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search
-		//"starter", "main dish" or "dessert"
-		switch(type){
-			case 'starter':
-				type = 'appetizer';
-				break;
-			case 'main dish':
-				type = 'main course';
-				break;
-			case 'dessert':
-				break;
+	    if(type === "All"){
+	    	type = '';
 		}
 
 		// Create the URL object for the endpoint
@@ -445,7 +433,7 @@ let DinnerModel = function() {
 		let params = {
 			number: resultNumber,
 			query: filter,
-			type: type
+			type: type.toLowerCase(),
 		};
 
 		// Append parameters to the URL in the js way
