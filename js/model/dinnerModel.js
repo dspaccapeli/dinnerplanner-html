@@ -360,16 +360,19 @@ let DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		let toAdd = this.getDish(id);
-		let newMenu = [];
-		menu.forEach((entry) => {
-			if(entry.type !== toAdd.type){
-				newMenu.push(entry)
-			}
+		let toAdd;
+		this.getDish(id).then(entry => {
+			let newMenu = [];
+			menu.forEach((entry) => {
+				if(entry.type !== toAdd.type){
+					newMenu.push(entry)
+				}
+			});
+			newMenu.push(toAdd);
+			menu = newMenu;
+			this.notifyObservers("addedToMenu");
 		});
-		newMenu.push(toAdd);
-		menu = newMenu;
-		this.notifyObservers("addedToMenu");
+
 	};
 
 	// Removes dish from menu
@@ -517,13 +520,7 @@ let DinnerModel = function() {
 					.catch(console.error);
 			})
 			.catch(console.error);
-		/*fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
-			.then(handleHTTPError)
-			.then(response => response.json())
-			.then(data => {dish.description = data.summary})
-			.catch(console.error);*/
 
-		//promise.then(data => console.log(data));
 		return promise;
 	};
 
