@@ -37,45 +37,63 @@ let DishDetailsView = function (container, model) {
         return [HTMLString, total];
     }
 
-    var init = function () {
-        let dishDict = model.getChosenDish();
+    function addDishInfo() {
         let numOfPeople = model.getNumberOfGuests();
-        let dishDiv = container.find("#dish");
+        model.getChosenDish().then(dishDict => {
+            // update main dish information
+            this.dishDiv.html(dishHTML(dishDict));
+
+            // update ingredients information
+            this.ingredientsDiv.html(ingredientsHTML(numOfPeople, dishDict)[0]);
+            this.totalIngredients.html("SEK " + ingredientsHTML(numOfPeople, dishDict)[1]);
+
+            if (Object.keys(dishDict).length === 0) {
+                this.dishDiv.html("Something went wrong in displaying the dish.");
+                this.ingredientsDiv.html("Something went wrong in displaying the ingredients.");
+                this.totalIngredients.html("");
+            }
+
+        }).catch( error => {
+            this.dishDiv.html("Dish could not be loaded because of an error.");
+            this.ingredientsDiv.html("Dish ingredients could not be loaded because of an error.");
+            this.totalIngredients.html("");
+        });
+    }
+
+    var init = function () {
+        let dishDiv1 = container.find("#dish");
         let ingredientsDiv = container.find("#ingredients");
 
-        var html = "<div id='dish_description'>";
-        html += dishHTML(dishDict);
+        var html = "<div id='dish_description'><div class='loading'></div>";
         html += "</div><button type=\"button\" class=\"btn btn-warning\" id='backToSearch'>Back to search</button>";
-        dishDiv.html(html);
+        dishDiv1.html(html);
 
-        var html2 = "<div id='ingredients1' class='margin_5'>";
-        html2 += ingredientsHTML(numOfPeople, dishDict)[0];
+        var html2 = "<div id='ingredients1' class='margin_5'><div class='loading'></div>";
         html2 += "</div><div id=\"add_price\" class=\"row\"><div class=\"col-5\">"
         html2 += "<div align=\"center\"><button type=\"button\" class=\"btn btn-warning\" id='addToMenu'>Add to menu</button></div>";
-        html2 += "</div><div class=\"col-3\"></div><div id=\"total_ingredients\" class=\"col-3\">";
-        html2 += "SEK " + ingredientsHTML(numOfPeople, dishDict)[1] + "</div>";
-
+        html2 += "</div><div class=\"col-3\"></div><div id=\"total_ingredients\" class=\"col-3\"></div>";
         ingredientsDiv.html(html2);
+
+        this.dishDiv = container.find("#dish_description");
+        this.ingredientsDiv = container.find("#ingredients1");
+        this.totalIngredients = container.find("#total_ingredients");
+
+        addDishInfo();
     }
 
     init();
 
     this.backToSearchButton = container.find("#backToSearch");
     this.addToMenuButton = container.find("#addToMenu");
+    this.dishDiv = container.find("#dish_description");
+    this.ingredientsDiv = container.find("#ingredients1");
+    this.totalIngredients = container.find("#total_ingredients");
 
     this.update = function(model, changeDetails) {
-        let dishDict = model.getChosenDish();
-        let numOfPeople = model.getNumberOfGuests();
-        let dishDiv = container.find("#dish_description");
-        let ingredientsDiv = container.find("#ingredients1");
-        let totalIngredients = container.find("#total_ingredients");
-
-        // update main dish information
-        dishDiv.html(dishHTML(dishDict));
-
-        // update ingredients information
-        ingredientsDiv.html(ingredientsHTML(numOfPeople, dishDict)[0]);
-        totalIngredients.html("SEK " + ingredientsHTML(numOfPeople, dishDict)[1]);
+        this.dishDiv.html("<div class='loading'></div>");
+        this.ingredientsDiv.html("<div class='loading'></div>");
+        this.totalIngredients.html("");
+        addDishInfo();
     }
 
     model.addObserver(this.update);

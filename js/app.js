@@ -19,13 +19,6 @@ $(function() {
     let dishDetailsViewCtrl = new DishDetailsViewCtrl(dishDetailsView, model, this);
     let dinnerOverviewViewCtrl = new DinnerOverviewViewCtrl(dinnerOverviewView, model, this);
 
-	/**
-	 * IMPORTANT: app.js is the only place where you are allowed to
-	 * use the $('someSelector') to search for elements in the whole HTML.
-	 * In other places you should limit the search only to the children 
-	 * of the specific view you're working with (see exampleView.js).
-	 */
-
 	let showMenu = function() {
         $("#menu").show();
     };
@@ -96,38 +89,38 @@ $(function() {
         hideDinnerOverview();
     };
 
-    this.showHome = function () {
+    this.homeScreen = function () {
         hideAllViews();
         showHome();
     }
 
-    this.showSelect = function() {
+    this.createNewDinner = function() {
         hideAllViews();
         showMenu();
         showSelectDish();
     };
 
-    this.showPrintout = function() {
+    this.printDinner = function() {
         hideAllViews();
         showTopbar();
         showPrintoutView();
     };
 
-    this.showDetails = function() {
+    this.chooseDish = function() {
         hideAllViews();
         showMenu();
         showDishDetails();
     };
 
-    this.showOverview = function() {
+    this.confirmDinner = function() {
         hideAllViews();
         showTopbar();
         showDinnerOverview();
     };
 
-    this.showHome();
+    this.homeScreen();
 
-    let showCall = this.showSelect;
+    let showCall = this.createNewDinner;
 
     $("#createNewDinner").click(function () {
         showCall();

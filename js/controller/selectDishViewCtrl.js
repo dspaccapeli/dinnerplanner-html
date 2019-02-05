@@ -2,7 +2,7 @@ let SelectDishViewCtrl = function (view, model, generalStateCtrl) {
 
     view.dishList.on("click", '.dish_item', function() {
         model.setChosenDish($(this).data('dishid'));
-        generalStateCtrl.showDetails();
+        generalStateCtrl.chooseDish();
     });
 
     view.searchButton.click(function(){
@@ -16,8 +16,16 @@ let SelectDishViewCtrl = function (view, model, generalStateCtrl) {
         view.update(model, "searching");
     });
 
+    /*
     view.keywords.keyup(function(){
         view.update(model, "searching");
+    });
+    */
+
+    view.keywords.keypress(function(e) {
+        if(e.which == 13) {
+            view.update(model, "searching");
+        }
     });
 
 }

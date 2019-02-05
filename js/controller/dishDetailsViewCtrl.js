@@ -1,7 +1,7 @@
 let DishDetailsViewCtrl = function (view, model, generalStateCtrl) {
 
     view.backToSearchButton.click(function () {
-        generalStateCtrl.showSelect();
+        generalStateCtrl.createNewDinner();
     });
 
     view.addToMenuButton.click(function () {
