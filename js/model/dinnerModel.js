@@ -450,7 +450,6 @@ let DinnerModel = function() {
 			.then(handleHTTPError)
 			.then(response => response.json())
 			.then(responseJson => {
-				console.log(responseJson);
 				let returnDict = [];
 				let resultDict = {};
 				responseJson.results.forEach(result => {
@@ -483,7 +482,7 @@ let DinnerModel = function() {
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 		let dish = {};
-		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+		let promise = fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
 			.then(data => {
@@ -494,7 +493,7 @@ let DinnerModel = function() {
 					resultDict = {};
 					resultDict.name = result.name;
 					resultDict.quantity = result.amount;
-					resultDict.unit = result.unitShort;
+					resultDict.unit = result.unit;
 					resultDict.price = 1;
 					returnDict.push(resultDict);
 				});
@@ -507,11 +506,14 @@ let DinnerModel = function() {
 
 				return dish;
 			})
-			.then(id => {
-				return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+			.then(dish => {
+				return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${dish.id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 					.then(handleHTTPError)
 					.then(response => response.json())
-					.then(data => {dish.description = data.summary})
+					.then(data => {
+						dish.description = data.summary;
+						return dish;
+					})
 					.catch(console.error);
 			})
 			.catch(console.error);
@@ -521,7 +523,8 @@ let DinnerModel = function() {
 			.then(data => {dish.description = data.summary})
 			.catch(console.error);*/
 
-		return dish;
+		//promise.then(data => console.log(data));
+		return promise;
 	};
 
 	/*this.formattedResults = function (response) {

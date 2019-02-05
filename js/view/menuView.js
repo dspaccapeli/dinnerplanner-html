@@ -8,7 +8,6 @@ let MenuView = function (container, model) {
 
     function showDishesOnMenu() {
         let menuDict = model.getFullMenu();
-        console.log(menuDict);
         let stringSelected = "";
         menuDict.forEach((entry) => {
             var price = 0;
@@ -55,7 +54,6 @@ let MenuView = function (container, model) {
     this.peopleSelect = container.find("#people_number");
 
     this.update = function(model, changeDetails) {
-        console.log(this.tableDiv);
         updateGuestNumber();
         container.find("#table_body1").html("");
 

@@ -4,7 +4,7 @@ let DishDetailsView = function (container, model) {
         let HTMLString = "";
         HTMLString += "<h1 id=\"name\">" + dishDict.name + "</h1>";
         HTMLString += "<div id=\"image\">";
-        HTMLString += "<img src='images/" + dishDict.image +  "' alt=\""+ dishDict.name + " class=\"image_responsive\" style=\"width: 100%;\">";
+        HTMLString += "<img src='" + dishDict.image +  "' alt=\""+ dishDict.name + " class=\"image_responsive\" style=\"width: 100%;\">";
         HTMLString += "</div>";
         HTMLString += "<p class=\"body_text\" id=\"description\" style=\"padding-left: 0;\">" + dishDict.description + "</p>";
 
@@ -39,9 +39,9 @@ let DishDetailsView = function (container, model) {
 
     function addDishInfo() {
         let numOfPeople = model.getNumberOfGuests();
-        /*model.getChosenDish().then(dishDict => {
+        model.getChosenDish().then(dishDict => {
             // update main dish information
-            this.dishDiv.html(dishHTML(dishDict));
+            container.find("#dish_description").html(dishHTML(dishDict));
 
             // update ingredients information
             this.ingredientsDiv.html(ingredientsHTML(numOfPeople, dishDict)[0]);
@@ -57,7 +57,7 @@ let DishDetailsView = function (container, model) {
             this.dishDiv.html("Dish could not be loaded because of an error.");
             this.ingredientsDiv.html("Dish ingredients could not be loaded because of an error.");
             this.totalIngredients.html("");
-        });*/
+        });
     }
 
     var init = function () {
@@ -90,9 +90,9 @@ let DishDetailsView = function (container, model) {
     this.totalIngredients = container.find("#total_ingredients");
 
     this.update = function(model, changeDetails) {
-        this.dishDiv.html("<div class='loading'></div>");
-        this.ingredientsDiv.html("<div class='loading'></div>");
-        this.totalIngredients.html("");
+        container.find("#dish_description").html("<div class='loading'></div>");
+        container.find("#ingredients1").html("<div class='loading'></div>");
+        container.find("#total_ingredients").html("");
         addDishInfo();
     }
 

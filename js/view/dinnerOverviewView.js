@@ -8,6 +8,7 @@ let DinnerOverviewView = function (container, model) {
         let HTMLString = "<div class=\"row align-items-end\">";
         menuArray.forEach((entry) => {
             let price = 0;
+            console.log(entry);
             (entry.ingredients).forEach((ingredient) => {
                 price += ingredient.price;
             });
