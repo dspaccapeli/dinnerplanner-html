@@ -256,29 +256,14 @@ let DinnerModel = function() {
 		}]
 	}
 	];
-	/*
-	//base search url
-	let search_get_url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
-	//base image url
-	let img_url = 'https://spoonacular.com/recipeImages/';
 
-	let init = function() {
-
-		let url = new URL(search_get_url);
-		let params = {number:20};
-
-		// append parameters to the url in the js way
-		Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-
-		fetch(url.toString(), {headers:{'X-Mashape-Key':'3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767', method: "GET",}})
-			.then(handleHTTPError)
-			.then(response => response.json())
-			.then(console.log)
-			.catch(console.error);
-	};
-
-	init();
-	*/
+	// base search url
+	let searchGetUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
+	// other api urls here
+	// ...
+	//
+	let resultNumber = 20;
+	let apiKeyContent = '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767';
 
 	// observer code
 	let observers = [];
@@ -298,49 +283,39 @@ let DinnerModel = function() {
 		}
 	};
 
-	// help with HTTP errors
-	// fetch is rejected only when there's a network error, not e.g. 404
-	/* USE LIKE THIS
-		fetch("https://api.imgur.com/3/album/xQY8w", {headers:{"authorization":"Client-ID SECRET"}})
-		.then(handleHTTPError)
-		.then(response => response.json())
-		.then(console.log)
-		.catch(console.error);
-
-	 */
+	// Help with HTTP errors
 	function handleHTTPError(response) {
 		if(response.ok)
 			return response;
 		throw Error(response.statusText);
 	}
 
-	// neza
 	this.setChosenDish = function (id) {
 		chosenDish = id;
 		this.notifyObservers("chosenDish");
 	};
 
-	// daniele
+	// nothing to change here, it's just a method call
+	// check getDish method
 	this.getChosenDish = function() {
 		//get the global variable
 		return this.getDish(chosenDish);
 	};
 
-	// neza
 	this.setNumberOfGuests = function(num) {
 		//set the global variable
 		guestNumber = num;
 		this.notifyObservers("changeGuests");
 	};
 
-	// daniele
+	// this shouldn't change regardless of APIs
+	// guestNumber is fully a concern of the model
 	this.getNumberOfGuests = function() {
 		//get the global variable
 		return guestNumber;
 	};
 
-	// neza
-	//Returns the dish that is on the menu for selected type 
+	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
 		let dishReturn;
 		menu.forEach((entry) => {
@@ -352,12 +327,13 @@ let DinnerModel = function() {
 	};
 
 	// daniele
-	//Returns all the dishes on the menu.
+	// Returns all the dishes on the menu.
+	// The menu should contain the dishes extracted dynamically from the API
+	// _but_ saved in the model
 	this.getFullMenu = function() {
 		return menu;
 	};
 
-	// neza
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		let allIngredients = [];
@@ -370,7 +346,8 @@ let DinnerModel = function() {
 	};
 
 	// daniele
-	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
+	// Returns the total price of the menu (all the ingredients multiplied by number of guests).
+	// Model's concern since the menu is saved on call from the model
 	this.getTotalMenuPrice = function() {
 		//return the dishes as an array string (ingredients)
 		let totalMenuPrice = 0;
@@ -380,7 +357,6 @@ let DinnerModel = function() {
 		return totalMenuPrice*guestNumber;
 	};
 
-	// neza
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
@@ -396,8 +372,10 @@ let DinnerModel = function() {
 		this.notifyObservers("addedToMenu");
 	};
 
-	// daniele
-	//Removes dish from menu
+	// Removes dish from menu
+	// We don't use this (according to WebStorm)
+	// If the id is correct (matches the spoonacular data)
+	// we have no problem
 	this.removeDishFromMenu = function(id) {
 		let toAdd = this.getDish(id);
 		let newMenu = [];
@@ -409,16 +387,17 @@ let DinnerModel = function() {
 		menu = newMenu;
 	};
 
-	// neza
+	// daniele
 	this.getAllTypes = function() {
-		return dishes;
+		return this.getAllDishes('All', '');
 	};
 
 	// daniele
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
+	// function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
+	// you can use the filter argument to filter out the dish by name or ingredient (use for search)
+	// if you don't pass any filter all the dishes will be returned
+	this.getAllDishes = function (type, filter) {
+	  /*
 	  return dishes.filter(function(dish) {
 		let found = true;
 		if (filter && filter != "") {
@@ -437,20 +416,113 @@ let DinnerModel = function() {
 			return dish.type == type && found;
 		}
 	  	return found;
-	  });	
+	  });
+	  */
+
+	  	//https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search
+		//"starter", "main dish" or "dessert"
+		switch(type){
+			case 'starter':
+				type = 'appetizer';
+				break;
+			case 'main dish':
+				type = 'main course';
+				break;
+			case 'dessert':
+				break;
+		}
+
+		// Create the URL object for the endpoint
+		let url = new URL(searchGetUrl);
+		// Create the URL parameter list
+		let params = {
+			number: resultNumber,
+			query: filter,
+			type: type
+		};
+
+		// Append parameters to the URL in the js way
+		Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+
+		// Fetch returns a promise
+		return fetch(url.toString(), {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+			.then(handleHTTPError)
+			.then(response => response.json())
+			.then(result => this.formattedResults(result))
+			.catch(console.error);
 	};
 
-	// neza
+	/*
+	{'id':1,
+		'name':'French toast',
+		'type':'starter',
+		'image':'toast.jpg',
+		'description':"In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
+		'ingredients':[{
+			'name':'eggs',
+			'quantity':0.5,
+			'unit':'',
+			'price':10
+		}
+	 */
+	// daniele
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
+		let dish = {};
+		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+			.then(handleHTTPError)
+			.then(response => response.json())
+			.then(data => {
+				dish.ingredients = this.formattedIngredients(data)
+				dish.id = data.id;
+				dish.name = data.title;
+				dish.type = 'useless';
+				dish.image = data.image;
+			});
+		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+			.then(handleHTTPError)
+			.then(response => response.json())
+			.then(data => {dish.description = data.summary});
+
+		return dish;
+	};
+
+	this.formattedResults = function (response) {
+		let returnDict = [];
+		let resultDict = {};
+		response.results.forEach(result => {
+			resultDict = {};
+			resultDict.id = result.id;
+			resultDict.name = result.title;
+			resultDict.type = 'useless';
+			resultDict.image = response.baseUri + result.image;
+			fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+				.then(handleHTTPError)
+				.then(response => response.json())
+				.then(data => {resultDict.description = data.summary});
+			fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+				.then(handleHTTPError)
+				.then(response => response.json())
+				.then(data => {resultDict.ingredients = this.formattedIngredients(data)});
+			returnDict.append(resultDict)
+		});
+		return returnDict;
+
 	};
 
 
-
+	this.formattedIngredients = function (response){
+		let returnDict = [];
+		let resultDict = {};
+		response.extendedIngredients.forEach(result => {
+			resultDict = {};
+			resultDict.name = result.name;
+			resultDict.quantity = result.amount;
+			resultDict.unit = result.unitShort;
+			resultDict.price = 1;
+		});
+		return returnDict;
+	};
 
 };
