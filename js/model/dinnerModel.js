@@ -3,7 +3,7 @@ let DinnerModel = function() {
 
 	let guestNumber = 0;
 	let menu = [];
-	let chosenDish = 1;
+	let chosenDish = 262682;
 
 	// daniele
 	// the dishes variable contains an array of all the
@@ -449,7 +449,20 @@ let DinnerModel = function() {
 		return fetch(url.toString(), {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
-			.then(result => this.formattedResults(result))
+			.then(responseJson => {
+				console.log(responseJson);
+				let returnDict = [];
+				let resultDict = {};
+				responseJson.results.forEach(result => {
+					resultDict = {};
+					resultDict.id = result.id;
+					resultDict.name = result.title;
+					resultDict.type = 'useless';
+					resultDict.image = responseJson.baseUri + result.image;
+					returnDict.push(resultDict);
+				});
+				return returnDict;
+			})
 			.catch(console.error);
 	};
 
@@ -470,25 +483,48 @@ let DinnerModel = function() {
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 		let dish = {};
-		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
 			.then(data => {
-				dish.ingredients = this.formattedIngredients(data)
+
+				let returnDict = [];
+				let resultDict = {};
+				data.extendedIngredients.forEach(result => {
+					resultDict = {};
+					resultDict.name = result.name;
+					resultDict.quantity = result.amount;
+					resultDict.unit = result.unitShort;
+					resultDict.price = 1;
+					returnDict.push(resultDict);
+				});
+				dish.ingredients = returnDict;
+
 				dish.id = data.id;
 				dish.name = data.title;
 				dish.type = 'useless';
 				dish.image = data.image;
-			});
-		fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+
+				return dish;
+			})
+			.then(id => {
+				return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
+					.then(handleHTTPError)
+					.then(response => response.json())
+					.then(data => {dish.description = data.summary})
+					.catch(console.error);
+			})
+			.catch(console.error);
+		/*fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 			.then(handleHTTPError)
 			.then(response => response.json())
-			.then(data => {dish.description = data.summary});
+			.then(data => {dish.description = data.summary})
+			.catch(console.error);*/
 
 		return dish;
 	};
 
-	this.formattedResults = function (response) {
+	/*this.formattedResults = function (response) {
 		let returnDict = [];
 		let resultDict = {};
 		response.results.forEach(result => {
@@ -500,16 +536,18 @@ let DinnerModel = function() {
 			fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/summary`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 				.then(handleHTTPError)
 				.then(response => response.json())
-				.then(data => {resultDict.description = data.summary});
+				.then(data => {resultDict.description = data.summary})
+				.catch(console.error);
 			fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${result.id}/information`, {headers:{'X-Mashape-Key': apiKeyContent, method: "GET",}})
 				.then(handleHTTPError)
 				.then(response => response.json())
-				.then(data => {resultDict.ingredients = this.formattedIngredients(data)});
-			returnDict.append(resultDict)
+				.then(data => {resultDict.ingredients = this.formattedIngredients(data)})
+				.catch(console.error);
+			returnDict.push(resultDict);
 		});
 		return returnDict;
 
-	};
+	};*/
 
 
 	this.formattedIngredients = function (response){

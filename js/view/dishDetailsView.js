@@ -39,7 +39,7 @@ let DishDetailsView = function (container, model) {
 
     function addDishInfo() {
         let numOfPeople = model.getNumberOfGuests();
-        model.getChosenDish().then(dishDict => {
+        /*model.getChosenDish().then(dishDict => {
             // update main dish information
             this.dishDiv.html(dishHTML(dishDict));
 
@@ -57,7 +57,7 @@ let DishDetailsView = function (container, model) {
             this.dishDiv.html("Dish could not be loaded because of an error.");
             this.ingredientsDiv.html("Dish ingredients could not be loaded because of an error.");
             this.totalIngredients.html("");
-        });
+        });*/
     }
 
     var init = function () {

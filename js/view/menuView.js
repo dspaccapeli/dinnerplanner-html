@@ -8,6 +8,7 @@ let MenuView = function (container, model) {
 
     function showDishesOnMenu() {
         let menuDict = model.getFullMenu();
+        console.log(menuDict);
         let stringSelected = "";
         menuDict.forEach((entry) => {
             var price = 0;
@@ -35,11 +36,13 @@ let MenuView = function (container, model) {
             + "</button></div></div><hr><div id='lalala' class='navbar-collapse collapse'><div><div class='form-group'>"
             + "<label for='people_number'>People:</label><select class='form-control' id='people_number'><option>1</option><option>2</option>"
             + "<option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>"
-            + "<option>10</option></select></div></div><table class='table table-striped'><thead><tr><th>Dish Name</th><th>Cost</th></tr></thead>"
-            + "<tbody id='table_body'></tbody></table><div align='center'><button type='button' class='btn btn-info' id='confirmDinner'>CONFIRM DINNER</button></div></div>";
+            + "<option>10</option></select></div></div>" +
+            "<table class='table table-striped'><thead><tr><th>Dish Name</th><th>Cost</th></tr></thead>"
+            + "<tbody id='table_body1'></tbody></table>" +
+            "<div align='center'><button type='button' class='btn btn-info' id='confirmDinner'>CONFIRM DINNER</button></div></div>";
 
         container.html(viewHTML);
-        this.tableDiv = container.find("#table_body");
+        this.tableDiv = container.find("#table_body1");
         this.tableDiv.html(showDishesOnMenu());
 
         updateGuestNumber();
@@ -47,14 +50,14 @@ let MenuView = function (container, model) {
 
     init();
 
-    this.tableDiv = container.find("#table_body");
+    this.tableDiv = container.find("#table_body1");
     this.confirmButton = container.find("#confirmDinner");
     this.peopleSelect = container.find("#people_number");
 
     this.update = function(model, changeDetails) {
-
+        console.log(this.tableDiv);
         updateGuestNumber();
-        this.tableDiv.html(showDishesOnMenu());
+        container.find("#table_body1").html("");
 
     };
 

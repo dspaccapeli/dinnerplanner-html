@@ -1,6 +1,7 @@
 let SelectDishView = function (container, model) {
 
     function getAllDishesData(promise) {
+        this.dishList.html("");
         promise.then(dishDict => {
             dishDict.forEach((entry) => {
                 let name = entry.name;
@@ -26,6 +27,7 @@ let SelectDishView = function (container, model) {
             + "<button id='search_button' class='btn btn-info' type='button'>Search</button></div></div><hr><br><div class='row align-items-center' id='dish_again_list'><div class='loading'></div></div>";
 
         container.html(viewHTML);
+        console.log()
         this.dishList = container.find("#dish_again_list");
 
         // TODO: API connect
