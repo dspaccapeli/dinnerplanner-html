@@ -1,9 +1,9 @@
-var DinnerPrintoutView = function (container, model) {
+let DinnerPrintoutView = function (container, model) {
 
-    var init = function () {
-        var menuDict = model.getFullMenu();
+    let init = function () {
+        let menuDict = model.getFullMenu();
 
-        var string = "";
+        let string = "";
         menuDict.forEach((entry) => {
             string += "<div class='row'><div class='media_box col-md-3 col-sm-4' style='vertical-align: middle;'><div class='media-top padding_5'><img src='images/";
             string += entry.image;
@@ -17,13 +17,13 @@ var DinnerPrintoutView = function (container, model) {
         });
 
         container.html(string);
-    }
+    };
 
     init();
 
     this.update = function(model, changeDetails) {
         init();
-    }
+    };
     model.addObserver(this.update);
 
-}
+};
