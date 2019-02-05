@@ -257,6 +257,10 @@ let DinnerModel = function() {
 	}
 	];
 
+	this.getChosenDishId = function(){
+		return chosenDish;
+	};
+
 	// base search url
 	let searchGetUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
 	// other api urls here

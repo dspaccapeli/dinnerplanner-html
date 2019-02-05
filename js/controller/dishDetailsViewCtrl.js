@@ -5,6 +5,6 @@ let DishDetailsViewCtrl = function (view, model, generalStateCtrl) {
     });
 
     view.addToMenuButton.click(function () {
-        model.addDishToMenu(model.getChosenDish().id);
+        model.addDishToMenu(model.getChosenDishId());
     });
-}
+};
