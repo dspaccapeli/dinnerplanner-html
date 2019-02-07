@@ -539,7 +539,7 @@ let DinnerModel = function() {
 		});
 		return returnDict;
 
-	};*/
+	};
 
 
 	this.formattedIngredients = function (response){
@@ -554,5 +554,7 @@ let DinnerModel = function() {
 		});
 		return returnDict;
 	};
+
+	*/
 
 };
