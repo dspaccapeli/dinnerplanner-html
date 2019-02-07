@@ -37,7 +37,7 @@ let DishDetailsView = function (container, model) {
         return [HTMLString, total];
     }
 
-    function addDishInfo() {
+    function addDishInfo(changeDetails) {
         let numOfPeople = model.getNumberOfGuests();
         model.getChosenDish().then(dishDict => {
             // update main dish information
@@ -60,15 +60,15 @@ let DishDetailsView = function (container, model) {
         });
     }
 
-    var init = function () {
+    let init = function () {
         let dishDiv1 = container.find("#dish");
         let ingredientsDiv = container.find("#ingredients");
 
-        var html = "<div id='dish_description'><div class='loading'></div>";
+        let html = "<div id='dish_description'><div class='loading'></div>";
         html += "</div><button type=\"button\" class=\"btn btn-warning\" id='backToSearch'>Back to search</button>";
         dishDiv1.html(html);
 
-        var html2 = "<div id='ingredients1' class='margin_5'><div class='loading'></div>";
+        let html2 = "<div id='ingredients1' class='margin_5'><div class='loading'></div>";
         html2 += "</div><div id=\"add_price\" class=\"row\"><div class=\"col-5\">"
         html2 += "<div align=\"center\"><button type=\"button\" class=\"btn btn-warning\" id='addToMenu'>Add to menu</button></div>";
         html2 += "</div><div class=\"col-3\"></div><div id=\"total_ingredients\" class=\"col-3\"></div>";
@@ -79,7 +79,7 @@ let DishDetailsView = function (container, model) {
         this.totalIngredients = container.find("#total_ingredients");
 
         addDishInfo();
-    }
+    };
 
     init();
 
@@ -93,9 +93,9 @@ let DishDetailsView = function (container, model) {
         container.find("#dish_description").html("<div class='loading'></div>");
         container.find("#ingredients1").html("<div class='loading'></div>");
         container.find("#total_ingredients").html("");
-        addDishInfo();
-    }
+        addDishInfo(changeDetails);
+    };
 
     model.addObserver(this.update);
 
-}
+};

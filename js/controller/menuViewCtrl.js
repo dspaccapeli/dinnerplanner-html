@@ -6,4 +6,4 @@ let MenuViewCtrl = function (view, model, generalStateCtrl) {
     view.peopleSelect.change(function() {
         model.setNumberOfGuests($(this).val());
     });
-}
+};

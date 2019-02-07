@@ -10,7 +10,7 @@ let MenuView = function (container, model) {
         let menuDict = model.getFullMenu();
         let stringSelected = "";
         menuDict.forEach((entry) => {
-            var price = 0;
+            let price = 0;
             entry.ingredients.forEach((entry1) => {
                 price += entry1.price;
             });
@@ -27,8 +27,8 @@ let MenuView = function (container, model) {
         return stringSelected;
     }
 
-    var init = function () {
-        var viewHTML = "<div class='row' style='padding-top: 5px;'><div class='col-sm-10 col-md-10 col-5'><h3>My Dinner</h3></div>"
+    let init = function () {
+        let viewHTML = "<div class='row' style='padding-top: 5px;'><div class='col-sm-10 col-md-10 col-5'><h3>My Dinner</h3></div>"
             + "<div class='col-sm-1 col-md-1 col-5 d-block d-sm-none' id='total_navbar'><h4 class='blue' style='padding-top: 5px;'>SEK "
             + model.getTotalMenuPrice() + "</h4></div><div class='col-sm-1 col-md-1 col-2 d-block d-sm-none' align='right'>"
             + "<button type='button' class='btn navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'><span class='fas fa-bars'></span>"
@@ -45,7 +45,7 @@ let MenuView = function (container, model) {
         this.tableDiv.html(showDishesOnMenu());
 
         updateGuestNumber();
-    }
+    };
 
     init();
 
@@ -61,4 +61,4 @@ let MenuView = function (container, model) {
 
     model.addObserver(this.update);
 
-}
+};
