@@ -430,13 +430,14 @@ let DinnerModel = function() {
 	  	return found;
 	  });
 	  */
-	    if(type === "All"){
-	    	type = '';
+	    if(type === "All" || type == undefined){
+	    	type = ' ';
 		}
 
 		// Create the URL object for the endpoint
 		let url = new URL(searchGetUrl);
 		// Create the URL parameter list
+		debugger
 		let params = {
 			number: resultNumber,
 			query: filter,
