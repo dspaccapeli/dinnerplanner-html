@@ -263,10 +263,10 @@ let DinnerModel = function() {
 	};
 	this.getChosenDishDetails = function() {
 		return chosenDishDetails;
-	}
+	};
 	this.setChosenDishDetails = function(dish) {
 		chosenDishDetails = dish;
-	}
+	};
 
 	// base search url
 	let searchGetUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
@@ -371,17 +371,20 @@ let DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		this.getDish(id).then(toAdd => {
-			let newMenu = [];
-			menu.forEach((entry) => {
-				newMenu.push(entry);
+		if (this.getChosenDishDetails() == undefined) {
+			this.getDish(id).then(toAdd => {
+				let newMenu = [];
+				menu.forEach((entry) => {
+					newMenu.push(entry);
+				});
+				newMenu.push(toAdd);
+				menu = newMenu;
+				this.notifyObservers("addedToMenu");
 			});
-			newMenu.push(toAdd);
-			console.log("new")
-			menu = newMenu;
+		} else {
+			menu.push(this.getChosenDishDetails());
 			this.notifyObservers("addedToMenu");
-		});
-
+		}
 	};
 
 	// Removes dish from menu
@@ -437,7 +440,6 @@ let DinnerModel = function() {
 		// Create the URL object for the endpoint
 		let url = new URL(searchGetUrl);
 		// Create the URL parameter list
-		debugger
 		let params = {
 			number: resultNumber,
 			query: filter,
@@ -514,9 +516,10 @@ let DinnerModel = function() {
 					.then(response => response.json())
 					.then(data => {
 						dish.description = data.summary;
+						this.setChosenDishDetails(dish)
 						return dish;
 					})
-			})
+			});
 
 		return promise;
 	};
