@@ -14,7 +14,12 @@ let SelectDishView = function (container, model) {
                 this.dishList.html("No dishes matching this criteria were found.");
             }
         }).catch( error => {
-            this.dishList.html("Dishes could not be loaded because of an error.");
+            if (error.name === "TypeError" && error.message === "Failed to fetch") {
+                this.dishList.html("Could not load data from the server. Please check your internet connection and try again.");
+            }
+            else {
+                this.dishList.html("An unknown error occured: "+ error.message);
+            }
         });
     }
 

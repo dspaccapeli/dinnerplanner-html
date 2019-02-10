@@ -4,6 +4,7 @@ let DinnerModel = function() {
 	let guestNumber = 0;
 	let menu = [];
 	let chosenDish = 262682;
+	let chosenDishDetails = {};
 
 	// daniele
 	// the dishes variable contains an array of all the
@@ -260,6 +261,12 @@ let DinnerModel = function() {
 	this.getChosenDishId = function(){
 		return chosenDish;
 	};
+	this.getChosenDishDetails = function() {
+		return chosenDishDetails;
+	}
+	this.setChosenDishDetails = function(dish) {
+		chosenDishDetails = dish;
+	}
 
 	// base search url
 	let searchGetUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
@@ -457,7 +464,6 @@ let DinnerModel = function() {
 				});
 				return returnDict;
 			})
-			.catch(console.error);
 	};
 
 	/*
@@ -509,9 +515,7 @@ let DinnerModel = function() {
 						dish.description = data.summary;
 						return dish;
 					})
-					.catch(console.error);
 			})
-			.catch(console.error);
 
 		return promise;
 	};

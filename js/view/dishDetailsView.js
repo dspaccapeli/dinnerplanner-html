@@ -13,7 +13,7 @@ let DishDetailsView = function (container, model) {
 
     function ingredientsHTML(numOfPeople, dishDict) {
         let HTMLString = "";
-        HTMLString = "<h3 id=\"numOfPeople\" align='center' class='padding_10'>"+ "INGREDIENTS FOR " + numOfPeople + " PEOPLE" + "</h3>";
+        HTMLString = "<h3 id=\"numOfPeople\" align='center' class='padding_10'>"+ "INGREDIENTS FOR " + numOfPeople + "</h3>";
         HTMLString += "<div class='padding_5'><table id=\"table\" class=\"table\">";
         HTMLString += "<tbody>";
 
@@ -40,23 +40,33 @@ let DishDetailsView = function (container, model) {
     function addDishInfo(changeDetails) {
         let numOfPeople = model.getNumberOfGuests();
         model.getChosenDish().then(dishDict => {
+            model.setChosenDishDetails(dishDict);
             // update main dish information
             container.find("#dish_description").html(dishHTML(dishDict));
 
             // update ingredients information
             this.ingredientsDiv.html(ingredientsHTML(numOfPeople, dishDict)[0]);
             this.totalIngredients.html("SEK " + ingredientsHTML(numOfPeople, dishDict)[1]);
+            container.find("#addToMenu").show();
 
             if (Object.keys(dishDict).length === 0) {
                 this.dishDiv.html("Something went wrong in displaying the dish.");
                 this.ingredientsDiv.html("Something went wrong in displaying the ingredients.");
                 this.totalIngredients.html("");
+                container.find("#addToMenu").hide();
             }
 
         }).catch( error => {
-            this.dishDiv.html("Dish could not be loaded because of an error.");
-            this.ingredientsDiv.html("Dish ingredients could not be loaded because of an error.");
+            if (error.name === "TypeError" && error.message === "Failed to fetch") {
+                container.find("#dish_description").html("Could not load data from the server. Please check your internet connection and try again.");
+                container.find("#ingredients1").html("Ingredients were not loaded due to the same problem.");
+            }
+            else {
+                container.find("#dish_description").html("An unknown error occured: " + error.message);
+                container.find("#ingredients1").html("Ingredients were not loaded due to the same problem.");
+            }
             this.totalIngredients.html("");
+            container.find("#addToMenu").hide();
         });
     }
 
@@ -90,10 +100,27 @@ let DishDetailsView = function (container, model) {
     this.totalIngredients = container.find("#total_ingredients");
 
     this.update = function(model, changeDetails) {
-        container.find("#dish_description").html("<div class='loading'></div>");
-        container.find("#ingredients1").html("<div class='loading'></div>");
-        container.find("#total_ingredients").html("");
-        addDishInfo(changeDetails);
+        if (changeDetails === "changeGuests") {
+            container.find("#ingredients1").html("<h3 id=\"numOfPeople\" align='center' class='padding_10'>"+ "INGREDIENTS" + "</h3><div class='loading'></div>");
+            container.find("#total_ingredients").html("");
+            container.find("#addToMenu").hide();
+
+            let dishDict = model.getChosenDishDetails();
+            let numOfPeople = model.getNumberOfGuests();
+            // update ingredients information
+            container.find("#ingredients1").html(ingredientsHTML(numOfPeople, dishDict)[0]);
+            container.find("#total_ingredients").html("SEK " + ingredientsHTML(numOfPeople, dishDict)[1]);
+            container.find("#addToMenu").show();
+
+        }
+        else if (changeDetails === "chosenDish") {
+            container.find("#ingredients1").html("<h3 id=\"numOfPeople\" align='center' class='padding_10'>"+ "INGREDIENTS" + "</h3><div class='loading'></div>");
+            container.find("#dish_description").html("<div class='loading'></div>");
+            container.find("#total_ingredients").html("");
+            container.find("#addToMenu").hide();
+            addDishInfo();
+        }
+
     };
 
     model.addObserver(this.update);
