@@ -1,4 +1,4 @@
-Interaction Programing - Lab assignment 1 & 2 - MVC
+Interaction Programing - Lab assignment - MVC
 =================================================
 
 This project consists in a simple front-end MVC app written in vanilla Javascript. The app will let the user dynamically construct its menu consisting of one element per each dish category ('appetizers', 'main dishes', 'desserts'). After having constructed the menu, it's possible to decide for how many people to order for and view the ingredients list. 
